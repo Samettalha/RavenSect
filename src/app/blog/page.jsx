@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 export default function BlogPage() {
   // Dummy data for posts
@@ -34,7 +35,7 @@ export default function BlogPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900">
+    <div className="min-h-screen bg-gray-100 text-gray-900 pt-20">
       <header className="bg-blue-500 text-white py-4 px-8">
         <h1 className="text-2xl font-bold">Blog Sayfası</h1>
         <p>Elektronik dünyası üzerine düşüncelerinizi paylaşın!</p>
