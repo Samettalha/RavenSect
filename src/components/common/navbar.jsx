@@ -160,6 +160,16 @@ export default function Navbar() {
           >
             <p className="font-semibold text-sm text-white">İletişime Geçin</p>
           </Link>
+          <div className="min-w-[100px] text-center">
+            <Link
+              href="/naberabi"
+              className={`transition-all duration-300 ease-in-out hover:text-orange-500 ${isActive(
+                "/naberabi"
+              )}`}
+            >
+              Naber Abi
+            </Link>
+          </div>
         </div>
       </div>
     </nav>
