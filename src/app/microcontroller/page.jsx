@@ -18,7 +18,7 @@ const MicrocontrollersPage = () => {
       {/* Ana Görsel ve Tanıtım */}
       <section className="mb-10 relative">
         <motion.img 
-          src="/images/banner2.jpg" 
+          src="/images/yazılım1.jpeg" 
           alt="Mikrodenetleyici Banner" 
           className="w-full rounded-lg shadow-xl" 
           initial={{ opacity: 0 }} 
@@ -47,7 +47,7 @@ const MicrocontrollersPage = () => {
           transition={{ duration: 1 }}
         >
           <img
-            src="/images/microcontroller.png"
+            src="/images/yazılım1.jpeg"
             alt="Mikrodenetleyici Tarihçesi"
             className="w-full md:w-1/3 rounded-lg shadow-lg mb-4 md:mb-0 md:mr-6"
           />
@@ -64,9 +64,9 @@ const MicrocontrollersPage = () => {
         <h2 className="text-orange-500 text-3xl font-semibold mb-4">Öne Çıkan Mikrodenetleyiciler</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { title: "Arduino Uno", description: "Kolay kullanımı ve geniş topluluk desteği ile en popüler mikrodenetleyicilerden biri.", img: "/images/arduino.jpg" },
-            { title: "Raspberry Pi", description: "Mini bilgisayar olarak da kullanılabilen güçlü bir platform.", img: "/images/raspberrypi.jpg" },
-            { title: "ESP32", description: "WiFi ve Bluetooth özellikleriyle IoT projelerinde sıkça tercih edilir.", img: "/images/esp32.jpg" }
+            { title: "Arduino Uno", description: "Kolay kullanımı ve geniş topluluk desteği ile en popüler mikrodenetleyicilerden biri.", img: "/images/yazılım1.jpeg" },
+            { title: "Raspberry Pi", description: "Mini bilgisayar olarak da kullanılabilen güçlü bir platform.", img: "/images/yazılım1.jpeg" },
+            { title: "ESP32", description: "WiFi ve Bluetooth özellikleriyle IoT projelerinde sıkça tercih edilir.", img: "/images/yazılım1.jpeg" }
           ].map((item, index) => (
             <motion.div
               key={index}
@@ -87,10 +87,10 @@ const MicrocontrollersPage = () => {
         <h2 className="text-orange-500 text-3xl font-semibold mb-4">Kullanım Alanları</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
-            { title: "Otomotiv", description: "Araç kontrol sistemleri, motor optimizasyonu ve güvenlik uygulamaları.", img: "/images/automotive.jpg" },
-            { title: "IoT", description: "Akıllı ev sistemleri, sensör ağları ve otomasyon projelerinde vazgeçilmezdir.", img: "/images/iot.jpg" },
-            { title: "Robotik", description: "Robot kolları, insansız araçlar ve yapay zeka tabanlı projeler.", img: "/images/robotics.jpg" },
-            { title: "Tıp", description: "Kalp monitörleri, tıbbi görüntüleme cihazları ve daha fazlası.", img: "/images/medical.jpg" }
+            { title: "Otomotiv", description: "Araç kontrol sistemleri, motor optimizasyonu ve güvenlik uygulamaları.", img: "/images/yazılım1.jpeg" },
+            { title: "IoT", description: "Akıllı ev sistemleri, sensör ağları ve otomasyon projelerinde vazgeçilmezdir.", img: "/images/yazılım1.jpeg" },
+            { title: "Robotik", description: "Robot kolları, insansız araçlar ve yapay zeka tabanlı projeler.", img: "/images/yazılım1.jpeg" },
+            { title: "Tıp", description: "Kalp monitörleri, tıbbi görüntüleme cihazları ve daha fazlası.", img: "/images/yazılım1.jpeg" }
           ].map((item, index) => (
             <motion.div
               key={index}

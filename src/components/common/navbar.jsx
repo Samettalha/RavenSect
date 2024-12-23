@@ -1,49 +1,53 @@
-"use client";
-import { useState, useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
-import { FiMenu, FiX } from "react-icons/fi";
+"use client";  // "use client" ifadesi, bu bileşenin yalnızca istemci tarafında çalışacağını belirtir. Next.js, bazı bileşenlerin yalnızca istemci tarafında çalışmasını sağlar.
+
+import { useState, useEffect, useRef } from "react";  // React kütüphanesinden state, effect ve referansları import eder.
+import { usePathname } from "next/navigation";  // Next.js'in yönlendirme kütüphanesinden, mevcut yol bilgisini almak için kullanılır.
+import Image from "next/image";  // Next.js'in optimized image bileşeni, görsellerin daha verimli yüklenmesini sağlar.
+import Link from "next/link";  // Next.js'in yönlendirme bileşeni, sayfalar arası gezinti sağlar.
+import { FiMenu, FiX } from "react-icons/fi";  // React Icons kütüphanesinden menü ve kapama ikonlarını import eder.
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);  // Menü açık mı değil mi kontrol etmek için state
+  const pathname = usePathname();  // Şu anki URL yolunu almak için
 
-  // State to manage navbar visibility
+  // Navbar'ın görünürlüğünü yönetmek için state
   const [showNavbar, setShowNavbar] = useState(true);
 
-  // Ref to store previous scroll position
+  // Önceki scroll pozisyonunu saklamak için ref
   const prevScrollPos = useRef(
     typeof window !== "undefined" ? window.pageYOffset : 0
   );
 
   useEffect(() => {
+    // Sayfa kaydırıldığında navbar'ın gizlenip gizlenmeyeceğini kontrol eder.
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
 
       if (prevScrollPos.current > currentScrollPos) {
-        // User is scrolling up
+        // Kullanıcı yukarı kaydırıyorsa navbar'ı göster
         setShowNavbar(true);
       } else {
-        // User is scrolling down
+        // Kullanıcı aşağı kaydırıyorsa navbar'ı gizle
         setShowNavbar(false);
       }
 
-      prevScrollPos.current = currentScrollPos;
+      prevScrollPos.current = currentScrollPos;  // Önceki scroll pozisyonunu güncelle
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);  // Sayfa kaydırma olayına dinleyici ekler
 
-    // Cleanup the event listener on component unmount
+    // Cleanup (temizleme) işlevi: Sayfa bileşeni unmont edilmeden önce scroll dinleyicisini kaldırır
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
+  // Menü açma ve kapama işlevi
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  // Geçerli yolu kontrol edip aktif yolu belirlemek için yardımcı işlev
   const isActive = (path) => {
     return pathname === path ? "text-orange-500" : "text-white";
   };
@@ -55,19 +59,20 @@ export default function Navbar() {
       }`}
       style={{ backgroundColor: "hsla(0, 0%, 9%, 0.4)" }}
     >
+      {/* Navbar'ın içerik bölümü */}
       <div className="container mx-auto flex justify-between items-center h-20 px-5">
-        {/* Logo that links to the home page */}
+        {/* Logo, ana sayfaya yönlendirir */}
         <Link href="/">
           <Image
             src={"/images/sametalasın.png"}
-            alt="logo"
-            width={80}
-            height={20}
+            alt="XPZone Logo"  // Logo resmi
+            width={90}
+            height={31}
             className="cursor-pointer"
           />
         </Link>
 
-        {/* Hamburger Menu Icon (Visible on small screens) */}
+        {/* Küçük ekranlarda menü ikonunu gösterir (Hamburger Menu) */}
         <div className="md:hidden flex items-center">
           <button onClick={toggleMenu}>
             {isOpen ? (
@@ -78,8 +83,9 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Links for larger screens */}
+        {/* Büyük ekranlar için navigasyon linkleri */}
         <div className="hidden md:flex justify-around text-white gap-12 font-semibold text-sm">
+          {/* Zonelar Link */}
           <div className="min-w-[100px] text-center">
             <Link
               href="/zonelar"
@@ -90,6 +96,7 @@ export default function Navbar() {
               Zonelar
             </Link>
           </div>
+          {/* Hakkımızda Link */}
           <div className="min-w-[100px] text-center">
             <Link
               href="/hakkimizda"
@@ -101,18 +108,20 @@ export default function Navbar() {
             </Link>
           </div>
 
+          {/* Naber Abi Link */}
           <div className="min-w-[100px] text-center">
             <Link
-              href="/naberabi"
+              href="/Maker"
               className={`transition-all duration-300 ease-in-out hover:text-orange-500 ${isActive(
-                "/naberabi"
+                "/Maker"
               )}`}
             >
-              Naber Abi
+              naber abi
             </Link>
           </div>
         </div>
 
+        {/* İletişim Linki - Büyük ekranlarda "İletişime Geçin" butonu */}
         <Link
           href="/iletisim"
           className="hidden md:flex rounded-[40px] px-5 py-3 text-center transition-all duration-300 ease-in-out hover:scale-105"
@@ -125,7 +134,7 @@ export default function Navbar() {
         </Link>
       </div>
 
-      {/* Mobile Menu (Visible when open) */}
+      {/* Mobile Menu (Mobil ekranlarda açılan menü) */}
       <div
         className={`overflow-hidden transition-all duration-500 ease-in-out ${
           isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
@@ -133,6 +142,7 @@ export default function Navbar() {
         style={{ backgroundColor: "hsla(0, 0%, 9%, 0.4)" }}
       >
         <div className="flex flex-col items-center gap-5 py-5">
+          {/* Mobile menüde Zonelar, Hakkımızda ve naber abi linkleri */}
           <Link
             href="/zonelar"
             className={`transition-all duration-300 ease-in-out hover:font-bold hover:text-orange-500 ${isActive(
@@ -149,7 +159,17 @@ export default function Navbar() {
           >
             Hakkımızda
           </Link>
-
+          <div className="min-w-[100px] text-center">
+            <Link
+              href="/Maker"
+              className={`transition-all duration-300 ease-in-out hover:text-orange-500 ${isActive(
+                "/Maker"
+              )}`}
+            >
+              naber abi
+            </Link>
+          </div>
+          {/* İletişim linki mobilde */}
           <Link
             href="/iletisim"
             className="rounded-[40px] px-5 py-3 text-center"
@@ -160,16 +180,6 @@ export default function Navbar() {
           >
             <p className="font-semibold text-sm text-white">İletişime Geçin</p>
           </Link>
-          <div className="min-w-[100px] text-center">
-            <Link
-              href="/naberabi"
-              className={`transition-all duration-300 ease-in-out hover:text-orange-500 ${isActive(
-                "/naberabi"
-              )}`}
-            >
-              Naber Abi
-            </Link>
-          </div>
         </div>
       </div>
     </nav>

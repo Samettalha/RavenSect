@@ -1,7 +1,8 @@
 import TabStructure from "@/components/switchers/game-explanation-tab";
 import TabComponent from "@/components/switchers/general-tab";
-import GameCard from "@/components/cards/home-game-card";
+import GameCard from "@/components/cards/home-Area";
 import GlowingButton from "@/components/buttons/glowing-button";
+import Area from "@/components/cards/home-Area";
 
 export default function HomePageTabs() {
   return (
@@ -18,8 +19,8 @@ export default function HomePageTabs() {
     </section>
   );
 }
-const groundInteractiveGames = [
-  <GameCard
+const Electronics = [
+  <Area
     imageSrc="/images/elektronik1.jpeg"
     iconSrc="/images/E.logo1.png"
     buttonTitle="Keşfet"
@@ -30,8 +31,8 @@ const groundInteractiveGames = [
     </p>
 
     <p>Haydi teknolojiyle dolu bu deneyimi sen de yakından keşfet!</p>
-  </GameCard>,
-  <GameCard
+  </Area>,
+  <Area
     imageSrc="/images/yazılım1.jpeg"
     iconSrc="/images/algoritma.jpeg"
     buttonTitle="Keşfet"
@@ -41,8 +42,8 @@ const groundInteractiveGames = [
     <p>
       favori bölümü seç ve öğrenmeye başla
     </p>
-  </GameCard>,
-  <GameCard
+  </Area>,
+  <Area
     imageSrc="/images/robotik1.jpeg"
     iconSrc="/images/robotik2.jpeg"
     buttonTitle="Keşfet"
@@ -53,11 +54,11 @@ const groundInteractiveGames = [
       robotik favori bölümüm
     </p>
     <p>Haydi bakalım</p>
-  </GameCard>,
+  </Area>,
 ];
 
-const wallInteractiveGames = [
-  <GameCard
+const Software = [
+  <Area
     imageSrc="/images/yazılım1.jpeg"
     iconSrc="/images/yazılım2.jpeg"
     buttonTitle="Keşfet"
@@ -70,11 +71,11 @@ const wallInteractiveGames = [
     <p>
     Algoritma mantığına güveniyormusun hadi bakalım ylun açık olsun.
     </p>
-  </GameCard>,
+  </Area>,
 ];
 
-const rgbPanelGames = [
-  <GameCard
+const Robotic = [
+  <Area
     imageSrc="/images/mekatronik1.jpeg"
     iconSrc="/images/mekatronik2.jpeg"
     buttonTitle="Keşfet"
@@ -84,8 +85,8 @@ const rgbPanelGames = [
     <p>
      makine ve yazılım ile mi uğraşıyorsun? işte bu alan tam senlik
     </p>
-  </GameCard>,
-  <GameCard
+  </Area>,
+  <Area
     imageSrc="/images/algoritma.jpeg"
     iconSrc="/images/algoritma.jpeg"
     buttonTitle="Keşfet"
@@ -94,11 +95,11 @@ const rgbPanelGames = [
     <p>
        Algoritma
     </p>
-  </GameCard>,
+  </Area>,
 ];
 
 const tabData = [
-  { name: "elekronik", content: groundInteractiveGames },
-  { name: "yazılım", content: wallInteractiveGames },
-  { name: "robotik", content: rgbPanelGames },
+  { name: "elekronik", content:  Electronics },
+  { name: "yazılım", content:   Software},
+  { name: "robotik", content: Robotic },
 ];
