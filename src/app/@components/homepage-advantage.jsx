@@ -1,6 +1,6 @@
 export default function HomePageAdvantage() {
   return (
-    <div className="w-full h-screen flex flex-col gap-7 items-center justify-center px-5 bg-[url('/images/arkaplan1.jpeg')] bg-cover bg-center">
+    <div className="w-full h-screen flex flex-col gap-7 items-center justify-center px-5 bg-[url('/images/arkapla.jpeg')] bg-cover bg-center">
       <p className="text-center max-w-[1000px] text-white text-2xl sm:text-4xl font-bold">
         <span className="text-[#E654CF]">Ankarada</span> ...........{" "}
         <span className="text-[#FBB040]">TURKHIS BAKLAVA</span> lezzeti, eğlence
