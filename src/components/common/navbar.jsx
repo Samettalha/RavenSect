@@ -116,7 +116,7 @@ export default function Navbar() {
                 "/Maker"
               )}`}
             >
-              naber abi
+              Maker
             </Link>
           </div>
         </div>
@@ -166,7 +166,7 @@ export default function Navbar() {
                 "/Maker"
               )}`}
             >
-              naber abi
+              Maker
             </Link>
           </div>
           {/* İletişim linki mobilde */}

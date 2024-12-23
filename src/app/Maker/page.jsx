@@ -22,8 +22,8 @@ export default function ElectronicsPage() {
             src: "/images/elektronik3.jpeg",
             alt: "Telefon",
             title: "Telefon",
-            description: "Yüksek performanslı ve yenilikçi akıllı telefon.",
-            href: "/products/telefon"
+            description: "Yüksek performanslı ve yenilikçi.",
+            href: "/Maker"
           }, {
             src: "/images/elektronik3.jpeg",
             alt: "Laptop",
