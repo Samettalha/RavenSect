@@ -5,176 +5,176 @@ const ElectronicComponentsPage = () => {
   const components = [
     {
       name: "Direnç",
-      image: "/images/resistor.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Elektrik akımını sınırlamak veya belirli bir voltaj düşüşü oluşturmak için kullanılır.",
     },
     {
       name: "Kondansatör",
-      image: "/images/capacitor.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Elektrik yükünü depolayan ve gerektiğinde boşaltan bir elektronik bileşendir.",
     },
     {
       name: "Transistör",
-      image: "/images/transistor.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Elektrik sinyallerini güçlendirmek veya anahtarlamak için kullanılan bir yarı iletken cihazdır.",
     },
     {
       name: "Diyot",
-      image: "/images/diode.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Elektrik akımını sadece bir yönde ileten ve ters yöndeki akımı engelleyen bir bileşendir.",
     },
     {
       name: "LED",
-      image: "/images/led.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Işık yayan diyot, elektrik enerjisini ışık enerjisine dönüştürür.",
     },
     {
       name: "Bobin (Endüktör)",
-      image: "/images/inductor.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Manyetik alan oluşturmak veya elektrik akımını geçici olarak depolamak için kullanılır.",
     },
     {
       name: "Anahtar (Switch)",
-      image: "/images/switch.png",
+      image: "/images/Kurt1.jpeg",
       description: "Elektrik devresini açıp kapatmak için kullanılan bir bileşendir.",
     },
     {
       name: "Potansiyometre",
-      image: "/images/potentiometer.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Değişken direnç olarak kullanılır ve devredeki akımı veya voltajı ayarlamak için kullanılır.",
     },
     {
       name: "Kristal Osilatör",
-      image: "/images/crystal.png",
+      image:"/images/Kurt1.jpeg",
       description:
         "Sabit bir frekansta elektrik sinyalleri üretmek için kullanılır.",
     },
     {
       name: "Buton",
-      image: "/images/button.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Kullanıcı etkileşimi için kullanılan, elektrik devresini geçici olarak açan bir anahtar.",
     },
     {
       name: "Röle",
-      image: "/images/relay.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Bir elektrik devresini bir elektromıknatıs yardımıyla açıp kapatan bir anahtar.",
     },
     {
       name: "Termistör",
-      image: "/images/thermistor.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Isı ile direnci değişen ve sıcaklık algılama uygulamalarında kullanılan bir bileşendir.",
     },
     {
       name: "Fotodiyot",
-      image: "/images/photodiode.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Işık algılamak için kullanılan ve ışık enerjisini elektrik enerjisine dönüştüren bir diyot.",
     },
     {
       name: "Sesli Buzzer",
-      image: "/images/buzzer.png",
+      image:"/images/Kurt1.jpeg",
       description: "Sesli uyarılar için kullanılan bir elektronik bileşendir.",
     },
     {
       name: "Hoparlör",
-      image: "/images/speaker.png",
+      image: "/images/Kurt1.jpeg",
       description: "Elektrik sinyallerini ses dalgalarına dönüştürür.",
     },
     {
       name: "Mikrofon",
-      image: "/images/microphone.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Ses dalgalarını elektrik sinyallerine dönüştüren bir giriş cihazıdır.",
     },
     {
       name: "Motor",
-      image: "/images/motor.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Elektrik enerjisini mekanik enerjiye dönüştürmek için kullanılır.",
     },
     {
       name: "LDR (Işığa Duyarlı Direnç)",
-      image: "/images/ldr.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Işık yoğunluğuna bağlı olarak direnci değişen bir elektronik bileşendir.",
     },
     {
       name: "Piezoelektrik Sensör",
-      image: "/images/piezo.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Basınç ve titreşimleri algılayan bir sensördür.",
     },
     {
       name: "Şönt Direnç",
-      image: "/images/shunt.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Akımı ölçmek için kullanılan özel bir dirençtir.",
     },
     {
       name: "Akü",
-      image: "/images/battery.png",
+      image: "/images/Kurt1.jpeg",
       description: "Elektrik enerjisini depolayan ve sağlayan bir enerji kaynağıdır.",
     },
     {
       name: "Regülatör",
-      image: "/images/regulator.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Sabit bir voltaj çıkışı sağlamak için kullanılan bir devre elemanıdır.",
     },
     {
       name: "Amplifikatör",
-      image: "/images/amplifier.png",
+      image: "/images/Kurt1.jpeg",
       description: "Elektrik sinyallerini güçlendirmek için kullanılan bir cihazdır.",
     },
     {
       name: "Sensör Modülü",
-      image: "/images/sensor.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Ortam değişikliklerini algılayıp elektrik sinyaline dönüştüren bir modüldür.",
     },
     {
       name: "MOSFET",
-      image: "/images/mosfet.png",
+      image: "/images/Kurt1.jpeg",
       description:
         "Elektrik sinyallerini kontrol etmek ve amplifiye etmek için kullanılan bir transistör türüdür.",
     },
     {
         name: "Regülatör",
-        image: "/images/regulator.png",
+        image: "/images/Kurt1.jpeg",
         description:
           "Sabit bir voltaj çıkışı sağlamak için kullanılan bir devre elemanıdır.",
       },
       {
         name: "Regülatör",
-        image: "/images/regulator.png",
+        image: "/images/Kurt1.jpeg",
         description:
           "Sabit bir voltaj çıkışı sağlamak için kullanılan bir devre elemanıdır.",
       },
       {
         name: "Regülatör",
-        image: "/images/regulator.png",
+        image: "/images/Kurt1.jpeg",
         description:
           "Sabit bir voltaj çıkışı sağlamak için kullanılan bir devre elemanıdır.",
       },
       {
         name: "Regülatör",
-        image: "/images/regulator.png",
+        image: "/images/Kurt1.jpeg",
         description:
           "Sabit bir voltaj çıkışı sağlamak için kullanılan bir devre elemanıdır.",
       },
       {
         name: "Regülatör",
-        image: "/images/regulator.png",
+        image: "/images/Kurt1.jpeg",
         description:
           "Sabit bir voltaj çıkışı sağlamak için kullanılan bir devre elemanıdır.",
       },
@@ -202,8 +202,8 @@ const ElectronicComponentsPage = () => {
               <Image
                 src={component.image}
                 alt={component.name}
-                width={120}
-                height={120}
+                width={170}
+                height={170}
                 className="mx-auto"
               />
               <h2 className="text-xl font-bold text-orange-400 mt-4">

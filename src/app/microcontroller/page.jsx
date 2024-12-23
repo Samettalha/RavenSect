@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 
 const MicrocontrollersPage = () => {
   return (
-    <div className="font-sans  text-white p-5">
-        <br></br><br></br><br></br><br></br>
+    <div className="font-sans text-white p-5">
+      <br /><br /><br /><br />
       <motion.h1 
         className="text-center text-orange-500 text-5xl font-bold mb-10"
         initial={{ opacity: 0, y: -50 }}
@@ -20,7 +20,8 @@ const MicrocontrollersPage = () => {
         <motion.img 
           src="/images/yazılım1.jpeg" 
           alt="Mikrodenetleyici Banner" 
-          className="w-full rounded-lg shadow-xl" 
+          className="w-full rounded-lg shadow-xl"
+          style={{ width: '100%', height: '300px', objectFit: 'cover' }}
           initial={{ opacity: 0 }} 
           animate={{ opacity: 1 }} 
           transition={{ duration: 1.5 }}
@@ -35,7 +36,8 @@ const MicrocontrollersPage = () => {
           <p className="mt-2 text-lg">Mikrodenetleyiciler, modern teknolojinin kalbidir. Hayatımızın her alanında kullanılıyor!</p>
         </motion.div>
       </section>
-      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       {/* Tarihçesi */}
       <section className="mb-10">
         <h2 className="text-orange-500 text-3xl font-semibold mb-4">Tarihçesi</h2>
@@ -47,9 +49,10 @@ const MicrocontrollersPage = () => {
           transition={{ duration: 1 }}
         >
           <img
-            src="/images/yazılım1.jpeg"
+            src="/images/microcontroller.png"
             alt="Mikrodenetleyici Tarihçesi"
             className="w-full md:w-1/3 rounded-lg shadow-lg mb-4 md:mb-0 md:mr-6"
+            style={{ width: '500px', height: '400px' }}
           />
           <div>
             <p className="text-lg leading-relaxed">
@@ -74,7 +77,12 @@ const MicrocontrollersPage = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
-              <img src={item.img} alt={item.title} className="h-40 mx-auto mb-4 rounded-md" />
+              <img 
+                src={item.img} 
+                alt={item.title} 
+                className="h-40 mx-auto mb-4 rounded-md" 
+                style={{ width: '100%', height: 'auto' }} // Görsel boyutları ayarlanmış
+              />
               <h3 className="text-orange-500 text-2xl font-semibold">{item.title}</h3>
               <p className="mt-2 text-gray-300">{item.description}</p>
             </motion.div>
@@ -98,7 +106,12 @@ const MicrocontrollersPage = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
-              <img src={item.img} alt={item.title} className="h-40 mx-auto mb-4 rounded-md" />
+              <img 
+                src={item.img} 
+                alt={item.title} 
+                className="h-40 mx-auto mb-4 rounded-md" 
+                style={{ width: '100%', height: 'auto' }} // Görsel boyutları ayarlanmış
+              />
               <h3 className="text-orange-500 text-2xl font-semibold">{item.title}</h3>
               <p className="mt-2 text-gray-300">{item.description}</p>
             </motion.div>
