@@ -114,7 +114,7 @@ export default function ElectronicsPage() {
             }, {
               title: "Mikrodenetleyiciler",
               description: "Arduino ve Raspberry Pi gibi cihazlar hakkında bilgiler.",
-              href: "/resources/mikrodenetleyiciler"
+              href: "/microcontroller"
             }, {
               title: "Sinyal İşleme",
               description: "Analog ve dijital sinyal işlemenin temelleri.",

@@ -23,7 +23,7 @@ const groundInteractiveGames = [
     imageSrc="/images/elektronik1.jpeg"
     iconSrc="/images/E.logo1.png"
     buttonTitle="Keşfet"
-    buttonHref="/zonelar"
+    buttonHref="/naberabi"
   >
     <p>
       elektronik

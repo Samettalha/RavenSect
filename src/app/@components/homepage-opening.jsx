@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <div className="w-full h-screen ">
-      <VideoBackground videoSrc={"videos/video.mp4"}>
+      <VideoBackground videoSrc={"videos/background.mp4"}>
         <div className="w-full h-full flex justify-center md:justify-start p-5 items-end">
           <div className="flex flex-col gap-5 md:ml-[20%] md:mb-[8%] max-w-[600px]">
             <p className="font-bold text-white text-2xl md:text-4xl ">
