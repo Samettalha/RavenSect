@@ -35,8 +35,8 @@ export default function BlogPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900 pt-20">
-      <header className="bg-blue-500 text-white py-4 px-8">
+    <div className="min-h-screen  text-gray-900 pt-20">
+      <header className="bg-orange-500 text-white py-4 px-8">
         <h1 className="text-2xl font-bold">Blog Sayfası</h1>
         <p>Elektronik dünyası üzerine düşüncelerinizi paylaşın!</p>
       </header>
@@ -49,7 +49,7 @@ export default function BlogPage() {
               key={post.id}
               className="p-6 bg-white rounded-lg shadow-lg border border-gray-200"
             >
-              <h2 className="text-xl font-semibold text-blue-600">
+              <h2 className="text-xl font-semibold text-orange-500">
                 {post.title}
               </h2>
               <p className="mt-2 text-gray-700">{post.content}</p>
@@ -83,7 +83,7 @@ export default function BlogPage() {
                   ></textarea>
                   <button
                     onClick={() => addComment(post.id)}
-                    className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600"
+                    className="mt-2 px-4 py-2 bg-orange-500 text-white rounded-lg shadow hover:bg-orange-600"
                   >
                     Yorum Yap
                   </button>

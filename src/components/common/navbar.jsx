@@ -119,6 +119,16 @@ export default function Navbar() {
               Maker
             </Link>
           </div>
+          <div className="min-w-[100px] text-center">
+            <Link
+              href="/blog"
+              className={`transition-all duration-300 ease-in-out hover:text-orange-500 ${isActive(
+                "/blog"
+              )}`}
+            >
+              Blog
+            </Link>
+          </div>
         </div>
 
         {/* İletişim Linki - Büyük ekranlarda "İletişime Geçin" butonu */}
@@ -167,6 +177,16 @@ export default function Navbar() {
               )}`}
             >
               Maker
+            </Link>
+          </div>
+          <div className="min-w-[100px] text-center">
+            <Link
+              href="/blog"
+              className={`transition-all duration-30 ease-in-out hover:text-orange-500 ${isActive(
+                "/blog"
+              )}`}
+            >
+              Blog
             </Link>
           </div>
           {/* İletişim linki mobilde */}
