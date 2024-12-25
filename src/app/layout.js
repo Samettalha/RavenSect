@@ -3,8 +3,8 @@ import "./globals.css";
 import Navbar from "@/components/common/navbar";
 
 export const metadata = {
-  title: "naber",
-  description: "Official Website",
+  title: "Zainex",
+  description: " Zaniex Official Website",
   authors: [{ name: "samet talha", url: "https://github.com/Samettalha" }],
 };
 

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ElectronicsPage() {
   return (
@@ -73,18 +74,17 @@ export default function ElectronicsPage() {
                 <p className="text-gray-400 mt-2">{item.description}</p>
               </div>
               {/* Buton Sağ Alt Köşede, Alt Kenara Değmeyecek */}
-              <a
-                href={item.href}
-                className="absolute bottom-2 right-2 px-4 py-2 bg-gradient-to-r from-orange-700 to-orange-400 text-black rounded-lg text-sm hover:bg-gradient-to-r hover:from-orange-800 hover:to-orange-500"
-              >
-                İncele
-              </a>
+              <Link legacyBehavior href={item.href}>
+                <a className="absolute bottom-2 right-2 px-4 py-2 bg-gradient-to-r from-orange-700 to-orange-400 text-black rounded-lg text-sm hover:bg-gradient-to-r hover:from-orange-800 hover:to-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300">
+                  İncele
+                </a>
+              </Link>
             </div>
           ))}
         </section>
 
-       <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-       <br></br>
+      <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+      <br></br>
 
         {/* Teknik Bilgi ve Kaynaklar */}
         <section className="py-10 px-6 sm:px-8 lg:px-12 relative z-10 ">
@@ -120,18 +120,16 @@ export default function ElectronicsPage() {
               description: "Analog ve dijital sinyal işlemenin temelleri.",
               href: "/signal-processing"
             }].map((resource, index) => (
-              <a
-                key={index}
-                href={resource.href}
-                className="block p-6 border border-orange-500 text-white rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 animate-zoom-in hover:bg-orange-500 hover:text-black"
-              >
-                <h3 className="text-lg font-semibold text-white">{resource.title}</h3>
-                <p className="text-gray-400 mt-2">{resource.description}</p>
-              </a>
+              <Link legacyBehavior key={index} href={resource.href}>
+                <a className="block p-6 border border-orange-500 text-white rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 animate-zoom-in hover:bg-orange-500 hover:text-black">
+                  <h3 className="text-lg font-semibold text-white">{resource.title}</h3>
+                  <p className="text-gray-400 mt-2">{resource.description}</p>
+                </a>
+              </Link>
             ))}
           </div>
         </section>
-         <br></br>      <br></br>     <br></br>
+        <br></br>      <br></br>     <br></br>
         {/* Elektronik Yenilikler */}
         <section className="py-10 px-6 sm:px-8 lg:px-12 text-center relative z-10 animate-fade-in">
           <h2 className="text-3xl font-semibold text-white animate-slide-up">Elektronik Yenilikler</h2>
