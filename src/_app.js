@@ -1,5 +1,5 @@
-import { supabase } from 'api/supabase';
-
+import { supabase } from 'lib/supabase';
+abase
 function MyApp({ Component, pageProps }) {
   return (
     // Supabase bağlamı gerekirse buraya eklenebilir
