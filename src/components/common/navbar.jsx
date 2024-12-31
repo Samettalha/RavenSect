@@ -129,6 +129,17 @@ export default function Navbar() {
               Blog
             </Link>
           </div>
+          <div className="flex space-x-4">
+          {/* Kayıt Ol Butonu */}
+          <Link href="/register-g" className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition">
+            Kayıt Ol
+          </Link>
+
+          {/* Giriş Yap Butonu */}
+          <Link href="/login-g" className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition">
+            Giriş Yap
+          </Link>
+        </div>
         </div>
 
         {/* İletişim Linki - Büyük ekranlarda "İletişime Geçin" butonu */}
