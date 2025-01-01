@@ -6,6 +6,8 @@ const handleRegister = async (e) => {
       body: JSON.stringify({ email, password }),
     });
   
+
+        
     const data = await res.json();
     if (res.ok) {
       console.log('Kayıt başarılı:', data);
