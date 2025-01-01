@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabase";
+import { FaGoogle, FaGithub, FaFacebook, FaXing } from "react-icons/fa"; // React Icons
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +12,7 @@ const Login = () => {
   const blur = 10; // Blur seviyesini kod üzerinden ayarlamak
   const router = useRouter();
 
+  // Normal giriş işlemi
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -41,29 +43,35 @@ const Login = () => {
     }
   };
 
-  const handleOAuthLogin = async (provider) => {
+  // Sosyal medya ile giriş yapma
+  const handleSocialLogin = async (provider) => {
     try {
-      const { error } = await supabase.auth.signInWithOAuth({ provider });
-      if (error) throw new Error(error.message);
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: provider, // Hangi sağlayıcıyı kullanıyorsa
+      });
+
+      if (error) {
+        throw new Error(error.message);
+      }
     } catch (err) {
-      setError(err.message);
+      setError(err.message); // Hata varsa, kullanıcıya göster
     }
   };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br relative">
       <div
-        className="absolute inset-0 bg-[url('/images/login.jpg')] bg-cover bg-center opacity-100"
-        style={{ filter: `blur(${blur}px)` }}
+        className="absolute inset-0 bg-[url('/images/register.jpg')] bg-cover bg-center opacity-100"
+        style={{ filter: "blur(0px)" }}
         aria-hidden="true"
       ></div>
-      <div className="bg-gray-900 bg-opacity-10 backdrop-blur-sm border border-gray-500 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
+      <div className="bg-gray-900 bg-opacity-20 backdrop-blur-sm border border-gray-500 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
         <h2 className="text-3xl font-extrabold mb-6 text-orange-500">Giriş Yap</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
         <form onSubmit={handleLogin}>
           <input
             type="email"
-            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring--500"
             placeholder="E-posta"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -85,32 +93,39 @@ const Login = () => {
             {loading ? "Yükleniyor..." : "Giriş Yap"}
           </button>
         </form>
-        <div className="flex justify-around mt-6">
+
+        {/* Sosyal medya butonları */}
+        <div className="mt-6 flex justify-around">
           <button
-            onClick={() => handleOAuthLogin("google")}
-            className="bg-white text-black p-2 rounded-full shadow hover:shadow-lg"
+            onClick={() => handleSocialLogin('google')}
+            className="bg-blue-500 text-white p-3 rounded-full hover:bg-blue-600 transition flex items-center justify-center"
+            aria-label="Google ile Kayıt Ol"
           >
-            Google
+            <FaGoogle />
           </button>
           <button
-            onClick={() => handleOAuthLogin("github")}
-            className="bg-black text-white p-2 rounded-full shadow hover:shadow-lg"
+            onClick={() => handleSocialLogin('github')}
+            className="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900 transition flex items-center justify-center"
+            aria-label="GitHub ile Kayıt Ol"
           >
-            GitHub
+            <FaGithub />
           </button>
           <button
-            onClick={() => handleOAuthLogin("facebook")}
-            className="bg-blue-600 text-white p-2 rounded-full shadow hover:shadow-lg"
+            onClick={() => handleSocialLogin('facebook')}
+            className="bg-blue-700 text-white p-3 rounded-full hover:bg-blue-800 transition flex items-center justify-center"
+            aria-label="Facebook ile Kayıt Ol"
           >
-            Facebook
+            <FaFacebook />
           </button>
           <button
-            onClick={() => handleOAuthLogin("twitter")}
-            className="bg-blue-400 text-white p-2 rounded-full shadow hover:shadow-lg"
+            onClick={() => handleSocialLogin('X')}
+            className="bg-black text-white p-3 rounded-full hover:bg-gray-800 transition flex items-center justify-center"
+            aria-label="X ile Kayıt Ol"
           >
-            Twitter
+            <FaXing />
           </button>
         </div>
+
         <p className="text-sm text-purple-400 mt-4 text-center">
           Hesabın yok mu? 
           <span 
