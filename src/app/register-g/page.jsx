@@ -1,74 +1,75 @@
-"use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { supabase } from "../../lib/supabase";
-import { FaGoogle, FaGithub, FaFacebook, FaXing } from 'react-icons/fa';
+"use client"; // React hook'larını kullanabilmek için bu direktifi eklemelisin
 
-const Login = () => {
+import { useState } from "react";
+import { useRouter } from "next/navigation"; // useRouter hook'unu ekle
+import { supabase } from "../../lib/supabase"; // Burada göreli yolu kullan
+import { FaGoogle, FaGithub, FaFacebook, FaXing } from "react-icons/fa"; // İkon kütüphanesi eklendi
+
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
+  const [emailSent, setEmailSent] = useState(false);
+  const router = useRouter(); // useRouter'ı başlat
 
-  const handleLogin = async (e) => {
+  // Kayıt olma işlemi
+  const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+      // Supabase'e kullanıcı kaydetme
+      const { user, error } = await supabase.auth.signUp(
+        {
+          email,
+          password,
+        },
+        {
+          redirectTo: "http://localhost:3000/register-g", // Doğrulama sonrası yönlendirme
+        }
+      );
 
       if (error) {
-        throw new Error(error.message);
+        setError(error.message); // Hata mesajını göster
+      } else {
+        console.log("Kullanıcı başarıyla kaydedildi:", user);
+        setEmailSent(true); // Doğrulama e-postası gönderildiğini belirt
       }
-
-      const { user } = data;
-
-      if (!user.email_confirmed_at) {
-        throw new Error("E-posta adresiniz henüz doğrulanmamış. Lütfen e-postanızı kontrol edin.");
-      }
-
-      console.log("Giriş başarılı:", user);
-      router.push("/welcome");
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+    } catch (error) {
+      setError("Kayıt sırasında bir hata oluştu.");
     }
+
+    setLoading(false);
   };
 
+  // Sosyal medya ile kayıt olma işlemleri
   const handleSocialLogin = async (provider) => {
     try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: provider, // Hangi sağlayıcıyı kullanıyorsanız burada göndereceksiniz
-      });
-
+      const { error } = await supabase.auth.signInWithOAuth({ provider });
       if (error) {
-        throw new Error(error.message);
+        setError(error.message);
       }
-
-      console.log('Başarılı giriş sağlandı!');
     } catch (err) {
-      console.error('Giriş hatası:', err.message); // Hata mesajını konsola yazdırıyoruz
-      setError(err.message); // Hata mesajını kullanıcıya gösteriyoruz
+      setError("Sosyal medya ile giriş sırasında bir hata oluştu.");
     }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br relative">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-800 to-black relative">
+      {/* Arka plan */}
       <div
         className="absolute inset-0 bg-[url('/images/register.jpg')] bg-cover bg-center opacity-100"
-        style={{ filter: "blur(0px)" }}
+        style={{ filter: 'blur(0px)' }}
         aria-hidden="true"
       ></div>
-      <div className="bg-gray-900 bg-opacity-10 backdrop-blur-sm border border-gray-500 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
+      {/* Kayıt kutusu */}
+      <div className="bg-transparent backdrop-blur-lg border border-gray-700 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
         <h2 className="text-3xl font-extrabold mb-6 text-orange-500">Kayıt Ol</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
-        <form onSubmit={handleLogin}>
+        {emailSent && <div className="text-green-500 mb-4">Doğrulama e-postası gönderildi! Lütfen e-postanızı kontrol edin.</div>}
+        <form onSubmit={handleRegister}>
           <input
             type="email"
             className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
@@ -90,37 +91,36 @@ const Login = () => {
             className="w-full bg-orange-500 text-white p-3 rounded hover:bg-orange-600 transition disabled:opacity-50"
             disabled={loading}
           >
-            {loading ? "Yükleniyor..." : "Giriş Yap"}
+            {loading ? "Yükleniyor..." : "Kayıt Ol"}
           </button>
         </form>
-
         {/* Sosyal medya butonları */}
         <div className="mt-6 flex justify-around">
           <button
             onClick={() => handleSocialLogin('google')}
-            className="bg-red-500 text-white p-3 rounded-full hover:bg-red-600 transition flex items-center justify-center"
-            aria-label="Google ile Giriş Yap"
+            className="bg-blue-500 text-white p-3 rounded-full hover:bg-blue-600 transition flex items-center justify-center"
+            aria-label="Google ile Kayıt Ol"
           >
             <FaGoogle />
           </button>
           <button
             onClick={() => handleSocialLogin('github')}
             className="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900 transition flex items-center justify-center"
-            aria-label="GitHub ile Giriş Yap"
+            aria-label="GitHub ile Kayıt Ol"
           >
             <FaGithub />
           </button>
           <button
             onClick={() => handleSocialLogin('facebook')}
             className="bg-blue-700 text-white p-3 rounded-full hover:bg-blue-800 transition flex items-center justify-center"
-            aria-label="Facebook ile Giriş Yap"
+            aria-label="Facebook ile Kayıt Ol"
           >
             <FaFacebook />
           </button>
           <button
             onClick={() => handleSocialLogin('twitter')}
-            className="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition flex items-center justify-center"
-            aria-label="Twitter ile Giriş Yap"
+            className="bg-black text-white p-3 rounded-full hover:bg-gray-800 transition flex items-center justify-center"
+            aria-label="X ile Kayıt Ol"
           >
             <FaXing />
           </button>
@@ -130,4 +130,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
