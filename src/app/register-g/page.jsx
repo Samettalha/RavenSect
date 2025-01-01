@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation"; // useRouter hook'unu ekle
 import { supabase } from "../../lib/supabase"; // Burada göreli yolu kullan
+import { FaGoogle, FaGithub, FaFacebook, FaXing } from "react-icons/fa"; // İkon kütüphanesi eklendi
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -20,12 +21,15 @@ const Register = () => {
 
     try {
       // Supabase'e kullanıcı kaydetme
-      const { user, error } = await supabase.auth.signUp({
-        email,
-        password,
-      }, {
-        redirectTo: "http://localhost:3000/register-g", // Doğrulama sonrası yönlendirme
-      });
+      const { user, error } = await supabase.auth.signUp(
+        {
+          email,
+          password,
+        },
+        {
+          redirectTo: "http://localhost:3000/register-g", // Doğrulama sonrası yönlendirme
+        }
+      );
 
       if (error) {
         setError(error.message); // Hata mesajını göster
@@ -40,14 +44,26 @@ const Register = () => {
     setLoading(false);
   };
 
+  // Sosyal medya ile kayıt olma işlemleri
+  const handleSocialLogin = async (provider) => {
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({ provider });
+      if (error) {
+        setError(error.message);
+      }
+    } catch (err) {
+      setError("Sosyal medya ile giriş sırasında bir hata oluştu.");
+    }
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-800 to-black relative">
       {/* Arka plan */}
       <div
-       className="absolute inset-0 bg-[url('/images/register.jpg')] bg-cover bg-center opacity-100"
-       style={{ filter: 'blur(0px)' }}
-       aria-hidden="true">
-       </div>
+        className="absolute inset-0 bg-[url('/images/register.jpg')] bg-cover bg-center opacity-100"
+        style={{ filter: 'blur(0px)' }}
+        aria-hidden="true"
+      ></div>
       {/* Kayıt kutusu */}
       <div className="bg-transparent backdrop-blur-lg border border-gray-700 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
         <h2 className="text-3xl font-extrabold mb-6 text-orange-500">Kayıt Ol</h2>
@@ -78,6 +94,37 @@ const Register = () => {
             {loading ? "Yükleniyor..." : "Kayıt Ol"}
           </button>
         </form>
+        {/* Sosyal medya butonları */}
+        <div className="mt-6 flex justify-around">
+          <button
+            onClick={() => handleSocialLogin('google')}
+            className="bg-blue-500 text-white p-3 rounded-full hover:bg-blue-600 transition flex items-center justify-center"
+            aria-label="Google ile Kayıt Ol"
+          >
+            <FaGoogle />
+          </button>
+          <button
+            onClick={() => handleSocialLogin('github')}
+            className="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900 transition flex items-center justify-center"
+            aria-label="GitHub ile Kayıt Ol"
+          >
+            <FaGithub />
+          </button>
+          <button
+            onClick={() => handleSocialLogin('facebook')}
+            className="bg-blue-700 text-white p-3 rounded-full hover:bg-blue-800 transition flex items-center justify-center"
+            aria-label="Facebook ile Kayıt Ol"
+          >
+            <FaFacebook />
+          </button>
+          <button
+            onClick={() => handleSocialLogin('X')}
+            className="bg-black text-white p-3 rounded-full hover:bg-gray-800 transition flex items-center justify-center"
+            aria-label="X ile Kayıt Ol"
+          >
+            <FaXing />
+          </button>
+        </div>
       </div>
     </div>
   );

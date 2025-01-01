@@ -8,6 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const blur = 10; // Blur seviyesini kod üzerinden ayarlamak
   const router = useRouter();
 
   const handleLogin = async (e) => {
@@ -40,12 +41,22 @@ const Login = () => {
     }
   };
 
+  const handleOAuthLogin = async (provider) => {
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({ provider });
+      if (error) throw new Error(error.message);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br  relative">
-       <div className="absolute inset-0 bg-[url('/images/login.jpg')] bg-cover bg-center opacity-100"
-        style={{ filter: 'blur(1px)' }}
-          aria-hidden="true">
-          </div>
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br relative">
+      <div
+        className="absolute inset-0 bg-[url('/images/login.jpg')] bg-cover bg-center opacity-100"
+        style={{ filter: `blur(${blur}px)` }}
+        aria-hidden="true"
+      ></div>
       <div className="bg-gray-900 bg-opacity-10 backdrop-blur-sm border border-gray-500 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
         <h2 className="text-3xl font-extrabold mb-6 text-orange-500">Giriş Yap</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
@@ -74,6 +85,32 @@ const Login = () => {
             {loading ? "Yükleniyor..." : "Giriş Yap"}
           </button>
         </form>
+        <div className="flex justify-around mt-6">
+          <button
+            onClick={() => handleOAuthLogin("google")}
+            className="bg-white text-black p-2 rounded-full shadow hover:shadow-lg"
+          >
+            Google
+          </button>
+          <button
+            onClick={() => handleOAuthLogin("github")}
+            className="bg-black text-white p-2 rounded-full shadow hover:shadow-lg"
+          >
+            GitHub
+          </button>
+          <button
+            onClick={() => handleOAuthLogin("facebook")}
+            className="bg-blue-600 text-white p-2 rounded-full shadow hover:shadow-lg"
+          >
+            Facebook
+          </button>
+          <button
+            onClick={() => handleOAuthLogin("twitter")}
+            className="bg-blue-400 text-white p-2 rounded-full shadow hover:shadow-lg"
+          >
+            Twitter
+          </button>
+        </div>
         <p className="text-sm text-purple-400 mt-4 text-center">
           Hesabın yok mu? 
           <span 

@@ -24,7 +24,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row w-full items-center sm:justify-between px-10 mt-5 sm:mt-0">
           {/* Copyright bilgisi */}
           <p className="text-[16px] leading-[26px] text-[#AEAEAE] text-center">
-            © Copyright 2024, All Rights Reserved :D naber
+            © Copyright 2025, All Rights Reserved :D 
           </p>
 
           {/* Sosyal medya ikonları */}
