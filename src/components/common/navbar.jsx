@@ -60,14 +60,14 @@ export default function Navbar() {
       style={{ backgroundColor: "hsla(0, 0%, 9%, 0.4)" }}
     >
       {/* Navbar'ın içerik bölümü */}
-      <div className="container mx-auto flex justify-between items-center h-20 px-5">
+      <div className="container mx-auto flex justify-between items-center h-20 px-15">
         {/* Logo, ana sayfaya yönlendirir */}
         <Link href="/">
           <Image
-            src={"/images/sametalasın.png"}
-            alt="XPZone Logo"  // Logo resmi
-            width={90}
-            height={31}
+            src={"/images/zainexlogo-.png"}
+            alt="Zainex Logo"  // Logo resmi
+            width={230}
+            height={40}
             className="cursor-pointer"
           />
         </Link>
