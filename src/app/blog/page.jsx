@@ -8,13 +8,11 @@ export default function BlogPage() {
       id: 1,
       author: "Samet Talha",
       title: "Elektronik Dünyasında Yenilikler",
-      content: "hasret tam bir enayi bence :D",
+      content: "naber :D",
       comments: [
         { user: "Ayşe", text: "Çok bilgilendirici bir yazı olmuş, teşekkürler!" },
         { user: "Mehmet", text: "Katılıyorum, bu konuşma harika!" },
         { user: "Ahmet", text: "yenilikci bir görüş gerçekten harika!" },
-        { user: "Batu", text: "Samet abi sen nasıl bir kralsın ya!" },
-        { user: "Haster", text: "Samete katılıyorum  hem enayiyim hemde tam bir laz burunluyum !" },
       ],
     },
   ]);

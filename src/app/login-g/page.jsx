@@ -65,7 +65,7 @@ const Login = () => {
         style={{ filter: "blur(0px)" }}
         aria-hidden="true"
       ></div>
-      <div className="bg-gray-900 bg-opacity-20 backdrop-blur-sm border border-gray-500 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
+      <div className="bg-gray-900 bg-opacity-20 backdrop-blur-none border border-gray-200 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
         <h2 className="text-3xl font-extrabold mb-6 text-orange-500">Giriş Yap</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
         <form onSubmit={handleLogin}>
@@ -126,7 +126,7 @@ const Login = () => {
           </button>
         </div>
 
-        <p className="text-sm text-purple-400 mt-4 text-center">
+        <p className="text-sm text-white mt-4 text-center">
           Hesabın yok mu? 
           <span 
             className="text-orange-500 cursor-pointer hover:underline"
