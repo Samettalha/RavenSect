@@ -65,13 +65,13 @@ const Login = () => {
         style={{ filter: "blur(0px)" }}
         aria-hidden="true"
       ></div>
-      <div className="bg-gray-900 bg-opacity-20 backdrop-blur-none border border-gray-200 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
+      <div className="bg-gray-900 bg-opacity-20 backdrop-blur-sm border border-gray-200 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
         <h2 className="text-3xl font-extrabold mb-6 text-orange-500">Giriş Yap</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
         <form onSubmit={handleLogin}>
           <input
             type="email"
-            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring--500"
+            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
             placeholder="E-posta"
             value={email}
             onChange={(e) => setEmail(e.target.value)}

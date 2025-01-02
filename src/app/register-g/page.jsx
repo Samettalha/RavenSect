@@ -65,7 +65,7 @@ const Register = () => {
         aria-hidden="true"
       ></div>
       {/* Kayıt kutusu */}
-      <div className="bg-transparent backdrop-blur-lg border border-gray-700 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
+      <div className="bg-gray-900 bg-opacity-20 backdrop-blur-sm border border-gray-200 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
         <h2 className="text-3xl font-extrabold mb-6 text-orange-500">Kayıt Ol</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
         {emailSent && <div className="text-green-500 mb-4">Doğrulama e-postası gönderildi! Lütfen e-postanızı kontrol edin.</div>}

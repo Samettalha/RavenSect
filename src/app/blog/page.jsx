@@ -8,7 +8,7 @@ export default function BlogPage() {
       id: 1,
       author: "Samet Talha",
       title: "Elektronik Dünyasında Yenilikler",
-      content: "naber :D",
+      content: "naber",
       comments: [
         { user: "Ayşe", text: "Çok bilgilendirici bir yazı olmuş, teşekkürler!" },
         { user: "Mehmet", text: "Katılıyorum, bu konuşma harika!" },
