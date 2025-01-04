@@ -18,32 +18,25 @@ const Login = () => {
     setError(null);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    
       if (error) {
-        if (error.message.includes("Invalid login credentials")) {
-          throw new Error("Giriş bilgileri yanlış. Lütfen tekrar deneyin.");
-        }
-        throw new Error(error.message);
+        console.error("Giriş hatası:", error); // Detaylı log
+        throw new Error(error.message); // Hata mesajını göster
       }
-
+    
       const { user } = data;
-
       if (!user) {
-        throw new Error("Kullanıcı bulunamadı. Hesap oluşturmanız gerekebilir.");
+        throw new Error("Kullanıcı bulunamadı. Lütfen kayıt olun.");
       }
-
+    
       console.log("Giriş başarılı:", user);
       router.push("/welcome");
     } catch (err) {
       setError(err.message);
-    } finally {
-      setLoading(false);
     }
-  };
+    
+    };
 
   // Sosyal medya ile giriş yapma
   const handleSocialLogin = async (provider) => {
