@@ -1,7 +1,6 @@
 import ZoneCard from "@/components/cards/zone-card";
 import TabComponent from "@/components/switchers/general-tab";
 import ZonesOpening from "./@components/zones-opening";
-import GlowingButton from "@/components/buttons/glowing-button";
 export default function Zones() {
   return (
     <div className="flex flex-col items-center justify-center ">
@@ -12,7 +11,7 @@ export default function Zones() {
   );
 }
 
-const groundInteractiveGames = [
+const BilgisayarDalları = [
   <ZoneCard
     key="naber"
     bgImage="/images/kurt1.jpeg"
@@ -30,7 +29,7 @@ const groundInteractiveGames = [
   />,
   <ZoneCard
     key="wayfinder-ground"
-    bgImage="/images/video.mp4"
+    bgImage="/images/"
     iconSrc="/images/"
     title={
       <p className="font-normal">
@@ -61,7 +60,7 @@ const groundInteractiveGames = [
   />,
 ];
 
-const wallInteractiveGames = [
+const ElektronikDalları = [
   <ZoneCard
     key="pointpop-wall"
     bgImage="/images/"
@@ -79,7 +78,7 @@ const wallInteractiveGames = [
   />
 ];
 
-const rgbPanelGames = [
+const MekanikDalları = [
   <ZoneCard
     key="hexball-rgb"
     bgImage="/images/"
@@ -130,7 +129,7 @@ const rgbPanelGames = [
 ];
 
 const tabData = [
-  { name: "Bilgisayar Dalları", content: groundInteractiveGames },
-  { name: "Elektronik Dalları", content: wallInteractiveGames },
-  { name: "Mekanik Dalları", content: rgbPanelGames },
+  { name: "Bilgisayar Dalları", content: BilgisayarDalları },
+  { name: "Elektronik Dalları", content: ElektronikDalları },
+  { name: "Mekanik Dalları", content: MekanikDalları },
 ];

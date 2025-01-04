@@ -7,9 +7,9 @@ export default function AboutUsStats() {
         <div className="w-full xl:w-1/2">
           <div className="w-full px-5">
             <Image
-              src={"/images/yazılım1.jpeg"}
+              src={"/images/login.jpg"}
               layout="responsive"
-              alt="Game Image"
+              alt=":D buda benden"
               width={732}
               height={447}
             />

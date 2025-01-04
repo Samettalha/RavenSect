@@ -16,13 +16,16 @@ export default function TabComponent({
       {/* Conditionally render the part based on zonesTab prop */}
       {zonesTab && (
         <div
-          className="flex flex-col sticky z-20 pb-36 top-0 gap-10"
+          className="flex flex-col z-20 pb-36 gap-10"
           style={{
             background:
               "linear-gradient(180deg, #161616 66.9%, rgba(22, 22, 22, 0.00) 100%)",
           }}
         >
-          <div className="pt-12 flex flex-col justify-center items-center z-30 gap-10">
+          {/* Here, we set position: sticky to keep the header from moving */}
+          <div
+            className="pt-12 flex flex-col justify-center items-center z-30 gap-10 sticky top-0"
+          >
             <GlowingButton title={"naber"} />
             <h2 className="font-semibold max-w-[700px] text-2xl sm:text-[32px] text-center text-white">
               baklavanın tam zamanı
@@ -69,7 +72,11 @@ export default function TabComponent({
       <div className="mt-4 flex items-center justify-center">
         <div
           className={`w-full text-white ${fullscreen ? "" : "max-w-[1300px]"}`}
-          key={activeTab} // Add key to force rerender when tab changes
+          key={activeTab}
+          style={{
+            visibility: activeTab === null ? "hidden" : "visible", // Yazıları gizlemek için
+            opacity: activeTab === null ? 0 : 1,  // Yazıları gizlemek için
+          }}
         >
           {useFlexLayout ? (
             <div className="flex flex-col gap-4">

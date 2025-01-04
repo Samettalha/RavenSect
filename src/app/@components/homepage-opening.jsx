@@ -29,7 +29,7 @@ export default function HomePage() {
               sınırlarını zorlayacak, hem öğrenirken hem de eğlenirken
             </p>
             <div className="flex flex-col sm:flex-row gap-5">
-              <Link href="/blog">
+              <Link href="/hakkimizda">
                 <button
                   className="text-sm text-white font-semibold h-[47px] w-full sm:w-[215px] custom-border"
                   style={{

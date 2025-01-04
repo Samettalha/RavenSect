@@ -66,11 +66,9 @@ export default function Navbar() {
   const isActive = (path) => (pathname === path ? "text-orange-500" : "text-white");
 
   return (
-    <nav
-      className={`w-full z-50 border-b border-b-[#343434] bg-gradient-to-r from-black via-gray-900 to-gray-800 fixed top-0 transition-transform duration-300 ${
+    <nav className={`w-full z-50 border-b border-b-[#343434] bg-gradient-to-r from-black via-gray-900 to-gray-800 fixed top-0 transition-transform duration-300 ${
         navVisible ? "translate-y-0" : "-translate-y-full"
-      }`}
-    >
+      }`}>
       <div className="container mx-auto flex justify-between items-center h-20 px-5">
         <Link href="/">
           <Image
@@ -82,7 +80,7 @@ export default function Navbar() {
           />
         </Link>
 
-        <div className="hidden md:flex gap-12 text-white font-semibold items-center justify-center flex-1"> {/* Yazıları ortaladım */}
+        <div className="hidden md:flex gap-12 text-white font-semibold items-center justify-center flex-1">
           <Link href="/zonelar" className={`${isActive("/zonelar")} hover:text-orange-500`}>Zonelar</Link>
           <Link href="/hakkimizda" className={`${isActive("/hakkimizda")} hover:text-orange-500`}>Hakkımızda</Link>
           <Link href="/Maker" className={`${isActive("/Maker")} hover:text-orange-500`}>Maker</Link>
@@ -94,12 +92,12 @@ export default function Navbar() {
           <div className="relative">
             <button onClick={() => setShowDropdown(!showDropdown)} className="flex items-center gap-2 text-white">
               <Image src="/images/default-avatar.png" alt="Profil" width={30} height={30} className="rounded-full" />
-              {username || "Kullanıcı"} {/* Kullanıcı adı gösteriliyor */}
+              {username || "Kullanıcı"}
               <FiChevronDown />
             </button>
             {showDropdown && (
               <div className="absolute right-0 mt-2 bg-gray-800 text-white rounded shadow-lg">
-                <Link href="/profil " className="block px-4 py-2 hover:bg-gray-700">Profil Ayarları</Link>
+                <Link href="/profil" className="block px-4 py-2 hover:bg-gray-700">Profil Ayarları</Link>
                 <button onClick={handleLogout} className="block px-4 py-2 text-left hover:bg-gray-700">Çıkış Yap</button>
               </div>
             )}
@@ -119,6 +117,33 @@ export default function Navbar() {
         <Link href="/blog" className="block py-2 hover:text-orange-500">Blog</Link>
         <Link href="/iletisim" className="block py-2 rounded bg-gradient-to-r from-orange-500 to-orange-300 text-center hover:scale-105 transition">İletişime Geçin</Link>
       </div>
+
+      {isOpen && (
+        <div className="md:hidden bg-gray-800 p-5">
+          <Link href="/zonelar" className="block py-2 text-white hover:text-orange-500">Zonelar</Link>
+          <Link href="/hakkimizda" className="block py-2 text-white hover:text-orange-500">Hakkımızda</Link>
+          <Link href="/Maker" className="block py-2 text-white hover:text-orange-500">Maker</Link>
+          <Link href="/blog" className="block py-2 text-white hover:text-orange-500">Blog</Link>
+          <Link href="/iletisim" className="block py-2 rounded bg-gradient-to-r from-orange-500 to-orange-300 text-white text-center hover:scale-105 transition">
+            İletişime Geçin
+          </Link>
+          {user && (
+            <div className="mt-4 border-t border-gray-700 pt-4">
+              <div className="flex items-center gap-2 text-white">
+                <Image src="/images/default-avatar.png" alt="Profil" width={30} height={30} className="rounded-full" />
+                {username}
+              </div>
+              <Link href="/profil" className="block mt-2 text-white hover:text-orange-500">Profil Ayarları</Link>
+              <button
+                onClick={handleLogout}
+                className="block mt-2 text-white hover:text-orange-500"
+              >
+                Çıkış Yap
+              </button>
+            </div>            
+          )}
+        </div>            
+      )}
     </nav>
   );
 }

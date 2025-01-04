@@ -66,7 +66,7 @@ export default function ZoneCard({
                 alt="Player Count"
               />
               <p>
-                <b>{playerCount}</b> Oyuncu
+                <b>{playerCount}</b> naber
               </p>
             </div>
             {/* Oyuncu sayısı kısmı */}

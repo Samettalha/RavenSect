@@ -24,7 +24,7 @@ export default function AboutUsImages() {
         </div>
         <div className="w-full flex items-start lg:w-[40%] relative min-h-[400px] sm:min-h-[600px]">
           <Image
-            src={"/images/"}
+            src={"/images/login.jpg"}
             alt="About Us Image"
             objectFit="contain"
             layout="fill"
@@ -36,7 +36,7 @@ export default function AboutUsImages() {
       <div className="flex flex-col-reverse lg:flex-row gap-10 w-full  max-w-[1500px] ">
         <div className="w-full lg:w-[45%] flex  relative min-h-[280px] sm:min-h-[500px]">
           <Image
-            src={"/images/"}
+            src={"/images/login.jpg"}
             alt="About Us Image"
             objectFit="contain"
             layout="fill"
