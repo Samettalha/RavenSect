@@ -33,7 +33,7 @@ export default function WelcomePage() {
         className="mt-8"
       >
         <a
-          href="@components"
+          href="Maker"
           className="px-6 py-3 bg-orange-500 text-black rounded-lg shadow-lg hover:bg-orange-400 transition-all duration-300"
         >
           Explore Now

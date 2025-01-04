@@ -9,7 +9,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const blur = 10; // Blur seviyesini kod üzerinden ayarlamak
   const router = useRouter();
 
   // Normal giriş işlemi
@@ -25,13 +24,16 @@ const Login = () => {
       });
 
       if (error) {
+        if (error.message.includes("Invalid login credentials")) {
+          throw new Error("Giriş bilgileri yanlış. Lütfen tekrar deneyin.");
+        }
         throw new Error(error.message);
       }
 
       const { user } = data;
 
-      if (!user.email_confirmed_at) {
-        throw new Error("E-posta adresiniz henüz doğrulanmamış. Lütfen e-postanızı kontrol edin.");
+      if (!user) {
+        throw new Error("Kullanıcı bulunamadı. Hesap oluşturmanız gerekebilir.");
       }
 
       console.log("Giriş başarılı:", user);
@@ -62,10 +64,10 @@ const Login = () => {
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br relative">
       <div
         className="absolute inset-0 bg-[url('/images/register.jpg')] bg-cover bg-center opacity-100"
-        style={{ filter: "blur(0px)" }}
+        style={{ filter: "blur(8px)" }}
         aria-hidden="true"
       ></div>
-      <div className="bg-gray-900 bg-opacity-20 backdrop-blur-sm border border-gray-200 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
+      <div className="bg-gray-900 bg-opacity-60 backdrop-blur-lg border border-gray-400 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
         <h2 className="text-3xl font-extrabold mb-6 text-orange-500">Giriş Yap</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
         <form onSubmit={handleLogin}>
@@ -125,7 +127,15 @@ const Login = () => {
             <FaXing />
           </button>
         </div>
-
+        <p className="text-sm text-purple-400 mt-4 text-center">
+           Şifrenizi mi unuttunuz?{" "}
+         <span
+          className="text-orange-500 cursor-pointer hover:underline"
+          onClick={() => router.push("/forgotpassword")}
+           >
+           Şifre Yenile
+           </span>
+        </p>
         <p className="text-sm text-white mt-4 text-center">
           Hesabın yok mu? 
           <span 
