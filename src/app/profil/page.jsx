@@ -119,9 +119,10 @@ const ProfileSettings = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-800 to-black relative">
-      <div className="absolute inset-0 bg-cover bg-center opacity-100"></div>
-      <div className="bg-gray-900 bg-opacity-20 backdrop-blur-sm border border-gray-200 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br relative">
+      <div className="absolute inset-0 bg-[url('/images/login.jpg')] bg-cover bg-center opacity-40"></div>
+      <div className=" bg-opacity-20 backdrop-blur-sm border border-gray-200 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
+      <br></br>  <br></br>  <br></br>  <br></br>
         <h2 className="text-3xl font-extrabold mb-6 text-orange-500">Profil Ayarları</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
         {successMessage && <div className="text-green-500 mb-4">{successMessage}</div>}
@@ -152,7 +153,7 @@ const ProfileSettings = () => {
         <form onSubmit={handleProfileUpdate}>
           <input
             type="text"
-            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
             placeholder="Kullanıcı Adı"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -160,7 +161,7 @@ const ProfileSettings = () => {
           />
           <input
             type="email"
-            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
             placeholder="E-posta"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -168,7 +169,7 @@ const ProfileSettings = () => {
           />
           <input
             type="text"
-            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
             placeholder="Telefon Numarası"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
@@ -176,7 +177,7 @@ const ProfileSettings = () => {
           <select
             value={language}
             onChange={(e) => setLanguage(e.target.value)}
-            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-purple-500 text-black"
           >
             <option value="en">İngilizce</option>
             <option value="tr">Türkçe</option>
@@ -195,7 +196,7 @@ const ProfileSettings = () => {
 
           <input
             type="password"
-            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
             placeholder="Yeni Şifre (isteğe bağlı)"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}

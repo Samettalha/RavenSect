@@ -32,6 +32,7 @@ const ForgotPassword = () => {
         className="absolute inset-0 bg-[url('/images/login.jpg')] bg-cover bg-center opacity-40"
         aria-hidden="true"
       ></div>
+      <br></br>  <br></br>  <br></br>  <br></br>
       <div className="bg-gray-900 bg-opacity-40 backdrop-blur-sm border border-gray-500 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
         <h2 className="text-3xl font-extrabold mb-6 text-orange-500">Şifre Yenile</h2>
         {message && <div className="text-green-500 mb-4">{message}</div>}
