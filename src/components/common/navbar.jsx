@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
+import { FiChevronDown } from "react-icons/fi";
 import { supabase } from "../../lib/supabase";
 
 export default function Navbar() {
@@ -15,24 +15,10 @@ export default function Navbar() {
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState(null); // Kullanıcı adı için state
 
-  // Navbar scroll logic
-  const [navVisible, setNavVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  // Opaklık için sayısal değer
+  const opacity = 0.8; // Geliştirici kodda ayarlanabilir, şu an %80 opaklık
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        setNavVisible(false);
-      } else {
-        setNavVisible(true);
-      }
-      setLastScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
-
+  // Kullanıcı verilerini al
   useEffect(() => {
     const getUser = async () => {
       const { data: { user } } = await supabase.auth.getUser();
@@ -40,7 +26,7 @@ export default function Navbar() {
 
       if (user) {
         const { data, error } = await supabase
-          .from("profiles") // Supabase "profiles" tablosundan kullanıcı adını çekiyoruz
+          .from("profiles")
           .select("username")
           .eq("id", user.id)
           .single();
@@ -48,7 +34,7 @@ export default function Navbar() {
         if (data) {
           setUsername(data.username);
         } else {
-          setUsername("Kullanıcı"); // Kullanıcı adı yoksa yedek
+          setUsername("Kullanıcı");
         }
       }
     };
@@ -66,17 +52,20 @@ export default function Navbar() {
   const isActive = (path) => (pathname === path ? "text-orange-500" : "text-white");
 
   return (
-    <nav className={`w-full z-50 border-b border-b-[#343434] bg-gradient-to-r from-black via-gray-900 to-gray-800 fixed top-0 transition-transform duration-300 ${
-        navVisible ? "translate-y-0" : "-translate-y-full"
-      }`}>
+    <nav
+      className={`w-full z-50 border-b border-b-[#343434] bg-black fixed top-0 transition-transform duration-300`}
+      style={{
+        background: `rgba(0, 0, 0,7)`, // Dinamik opaklık
+      }}
+    >
       <div className="container mx-auto flex justify-between items-center h-20 px-5">
         <Link href="/">
           <Image
             src="/images/zainexlogo-.png"
             alt="Zainex Logo"
-            width={260} 
+            width={260}
             height={50}
-            className="cursor-pointer -ml-4" 
+            className="cursor-pointer -ml-4"
           />
         </Link>
 
