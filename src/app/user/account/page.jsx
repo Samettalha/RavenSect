@@ -118,8 +118,13 @@ function AccountSettings() {
       <div className="flex justify-end">
         <button
           onClick={handleSave}
-          className="bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition duration-300"
-        >
+          className=" text-white px-6 py-2 rounded hover:bg-orange-700 transition duration-300"
+          style={{
+            borderRadius: "40px",
+            background:
+              "linear-gradient(265deg, #F6EE59 -24.03%, #FF3000 111.01%)",
+             }}
+          >
           Kaydet
         </button>
       </div>

@@ -126,7 +126,11 @@ export default function Navbar() {
           <Link
             href="/iletisim"
             className="hidden md:block rounded-[40px] px-5 py-3 bg-gradient-to-r from-orange-600 to-orange-400 text-white hover:scale-105 transition"
-          >
+            style={{
+              borderRadius: "40px",
+              background:
+                "linear-gradient(265deg, #F6EE59 -24.03%, #FF3000 111.01%)",
+            }}>
             İletişime Geçin
           </Link>
         </div>
@@ -188,7 +192,11 @@ export default function Navbar() {
         <Link href="/zonelar" className="block py-2 hover:text-orange-500">
           Zonelar
         </Link>
-        <Link href="/hakkimizda" className="block py-2 hover:text-orange-500">
+        <Link href="/hakkimizda" className="block py-2 hover:text-orange-500 " style={{
+                    borderRadius: "40px",
+                    background:
+                      "linear-gradient(265deg, #F6EE59 -24.03%, #FF3000 111.01%)",
+                  }}>
           Hakkımızda
         </Link>
         <Link href="/blog" className="block py-2 hover:text-orange-500">

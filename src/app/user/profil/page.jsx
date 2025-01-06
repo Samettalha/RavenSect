@@ -204,7 +204,12 @@ const ProfileSettings = () => {
 
           <button
             type="submit"
-            className="w-full bg-orange-500 text-white p-3 rounded hover:bg-orange-600 transition disabled:opacity-50"
+            className="w-full  text-white p-3 rounded hover:bg-orange-600 transition disabled:opacity-50"
+            style={{
+              borderRadius: "40px",
+              background:
+                "linear-gradient(265deg, #F6EE59 -24.03%, #FF3000 111.01%)",
+            }}
             disabled={loading}
           >
             {loading ? "Yükleniyor..." : "Kaydet"}

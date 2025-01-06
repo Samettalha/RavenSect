@@ -6,12 +6,12 @@ export default function Footer() {
     <div className="mt-10">
       {/* Footer başlangıcı, üst kısmında logo yer alır */}
       <div className="flex items-center justify-center border-b p-5 border-b-[#585858]">
-      <Link href="/iletisim">
+      <Link href="/">
         <Image
       
-           src="/images/logo2.jpg"  // Logo görseli
+           src="/images/zainex.png"  // Logo görseli
           alt="10XP X"          // Görselin açıklaması
-          width={200}                 // Genişlik
+          width={300}                 // Genişlik
           height={35}                 // Yükseklik
           className="cursor-pointer" // Görselin tıklanabilir olması için stil
         
