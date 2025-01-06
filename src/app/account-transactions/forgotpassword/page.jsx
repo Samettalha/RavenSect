@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { supabase } from "../../lib/supabase";
+import { supabase } from "../../../lib/supabase";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -58,7 +58,7 @@ const ForgotPassword = () => {
           Geri dönmek ister misiniz?{" "}
           <span
             className="text-orange-500 cursor-pointer hover:underline"
-            onClick={() => router.push("/login-g")}
+            onClick={() => router.push("/account-transactions/login")}
           >
             Giriş Yap
           </span>

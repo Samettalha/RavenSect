@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation"; // useRouter hook'unu ekle
-import { supabase } from "../../lib/supabase"; // Burada göreli yolu kullan
+import { supabase } from "../../../lib/supabase"; // Burada göreli yolu kullan
 import { FaGoogle, FaGithub, FaFacebook, FaXing } from "react-icons/fa"; // İkon kütüphanesi eklendi
 
 const Register = () => {
@@ -28,7 +28,7 @@ const Register = () => {
           password,
         },
         {
-          redirectTo: `${window.location.origin}/register-g`, // Doğrulama sonrası yönlendirme
+          redirectTo: `${window.location.origin}/account transactions/register`, // Doğrulama sonrası yönlendirme
         }
       );
 

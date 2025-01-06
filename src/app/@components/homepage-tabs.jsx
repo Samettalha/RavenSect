@@ -6,7 +6,7 @@ import Area from "@/components/cards/home-Area";
 
 export default function HomePageTabs() {
   return (
-    <section className="w-full gap-5 py-20 lg:py-40 px-5 flex flex-col items-center justify-center bg-[url('/images/home-bg-1-desktop.png')] bg-cover bg-center">
+    <section className="w-full gap-5 py-20 lg:py-40 px-5 flex flex-col items-center justify-center bg-[url('/images/.png')] bg-cover bg-center">
       <GlowingButton title={"bölümler"} />
       <h2 className="font-semibold max-w-[700px] text-2xl sm:text-[40px] sm:leading-[50px] text-center text-white">
         Teknoloji Merkezli yepyeni bir eğitim sistemi

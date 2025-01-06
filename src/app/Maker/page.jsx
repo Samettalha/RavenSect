@@ -98,27 +98,27 @@ export default function ElectronicsPage() {
             {[{
               title: "Devre Çizimleri",
               description: "Temel ve gelişmiş devre çizimlerini öğrenin.",
-              href: "/circuit"
+              href: "/electronics/circuit"
             }, {
               title: "Komponent Bilgileri",
               description: "Elektronik komponentlerin işlevlerini keşfedin.",
-              href: "/E-companents"
+              href: "/electronics/e-companents"
             }, {
               title: "Elektrik ve Elektronik Temelleri",
               description: "Ohm Kanunu, Kirchoff Kuralları ve daha fazlası.",
-              href: "/E-basis"
+              href: "/electronics/E-basis"
             }, {
               title: "Yapay Zeka ve Elektronik",
               description: "Yapay zeka uygulamaları ile elektronik birleşimi.",
-              href: "/ai-e"
+              href: "/electronics/ai-e"
             }, {
               title: "Mikrodenetleyiciler",
               description: "Arduino ve Raspberry Pi gibi cihazlar hakkında bilgiler.",
-              href: "/microcontroller"
+              href: "/electronics/microcontroller"
             }, {
               title: "Sinyal İşleme",
               description: "Analog ve dijital sinyal işlemenin temelleri.",
-              href: "/signal-processing"
+              href: "/electronics/signal-processing"
             }].map((resource, index) => (
               <Link legacyBehavior key={index} href={resource.href}>
                 <a className="block p-6 border border-orange-500 text-white rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 animate-zoom-in hover:bg-orange-500 hover:text-black">

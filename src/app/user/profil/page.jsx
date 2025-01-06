@@ -1,7 +1,7 @@
 "use client"; 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "../../lib/supabase"; 
+import { supabase } from "../../../lib/supabase";  // Üç üst klasöre çıkma
 import { FaCamera, FaGoogle, FaGithub, FaFacebook, FaTwitter } from "react-icons/fa"; 
 
 const ProfileSettings = () => {

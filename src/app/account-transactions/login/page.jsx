@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "../../lib/supabase";
+import { supabase } from "../../../lib/supabase";
+import Link from 'next/link';  // Link bileşenini import edin
 import { FaGoogle, FaGithub, FaFacebook, FaXing } from "react-icons/fa"; // React Icons
 
 const Login = () => {
@@ -121,20 +122,17 @@ const Login = () => {
           </button>
         </div>
         <p className="text-sm text-purple-400 mt-4 text-center">
-           Şifrenizi mi unuttunuz?{" "}
-         <span
-          className="text-orange-500 cursor-pointer hover:underline"
-          onClick={() => router.push("/forgotpassword")}
-           >
-           Şifre Yenile
-           </span>
+          Şifrenizi mi unuttunuz?{" "}
+           <Link href="/account-transactions/forgotpassword" className="text-orange-500 cursor-pointer hover:underline">
+             Şifre Yenile
+          </Link>
         </p>
+
         <p className="text-sm text-white mt-4 text-center">
-          Hesabın yok mu? 
-          <span 
-            className="text-orange-500 cursor-pointer hover:underline"
-            onClick={() => router.push('/register-g')}
-          > Kayıt Ol</span>
+          Hesabın yok mu?{" "}
+          <Link href="/account-transactions/register" className="text-orange-500 cursor-pointer hover:underline">
+             Kayıt Ol
+         </Link>
         </p>
       </div>
     </div>

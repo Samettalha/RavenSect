@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image"; // Next.js görsel optimizasyonu için kullanılır
 import Link from "next/link";
 
-const CircuitDrawingPage = () => {
+const CircuitPage = () => {
   return (
     <div className=" text-white font-sans">
         <br></br><br></br>
@@ -151,4 +151,4 @@ const CircuitDrawingPage = () => {
   );
 };
 
-export default CircuitDrawingPage;
+export default CircuitPage;
