@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function ElektrikElektronikTemelleri() {
   return (
-    <div className="w-full bg-[#0d0d0d] text-white">
+    <div className="w-full  text-white">
       {/* Header Section */}
       <div className="w-full h-[400px] flex flex-col items-center justify-center bg-gradient-to-b from-orange-500 to-transparent">
         <h1 className="text-4xl font-bold mb-2">Elektrik ve Elektronik Temelleri</h1>

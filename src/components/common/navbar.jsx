@@ -12,13 +12,12 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false); // Profil dropdown state
+  const [isVisible, setIsVisible] = useState(true); // Navbar görünürlüğü için state
+  const [lastScrollY, setLastScrollY] = useState(0); // Son kaydırma pozisyonu
   const pathname = usePathname();
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState(null); // Kullanıcı adı için state
-
-  // Opaklık için sayısal değer
-  const opacity = 0.8; // Geliştirici kodda ayarlanabilir, şu an %80 opaklık
 
   // Kullanıcı verilerini al
   useEffect(() => {
@@ -48,7 +47,7 @@ export default function Navbar() {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setUser(null);
-    router.push("/login-g");
+    router.push("/account-transactions/login");
   };
 
   const toggleMenu = () => {
@@ -68,18 +67,38 @@ export default function Navbar() {
   const isActive = (path) =>
     pathname === path ? "text-orange-500" : "text-white";
 
+  // Kaydırma davranışını izlemek için useEffect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        setIsVisible(false); // Aşağı kaydırırken navbar gizlenir
+      } else {
+        setIsVisible(true); // Yukarı kaydırırken navbar görünür
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
   return (
     <nav
-      className={`w-full z-50 border-b border-b-[#343434] bg-black fixed top-0 transition-transform duration-300`}
+      className={`fixed top-0 w-full z-50 bg-black border-b border-[#343434] transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
       style={{
-        background: `rgba(0, 0, 0, 0.3)`, // Opaklık seviyesi 0.5
+        background: `rgba(0, 0, 0, 0.2)`,
       }}
     >
       <div className="container mx-auto flex justify-between items-center h-20 px-7">
         <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
           <Link href="/">
             <Image
-              src="/images/zainexlogo-.png"
+              src="/images/zainex.png"
               alt="Zainex Logo"
               width={260}
               height={50}
@@ -112,7 +131,7 @@ export default function Navbar() {
             {showDropdown && (
               <div className="absolute right-0 mt-2 bg-gray-800 text-white rounded shadow-lg">
                 <Link href="/Maker" className="block px-4 py-2 hover:bg-gray-700">
-                   Maker
+                  Maker
                 </Link>
                 <Link href="/menu-item2" className="block px-4 py-2 hover:bg-gray-700">
                   Menü Item 2
@@ -125,21 +144,22 @@ export default function Navbar() {
           </div>
           <Link
             href="/iletisim"
-            className="hidden md:block rounded-[40px] px-5 py-3 bg-gradient-to-r from-orange-600 to-orange-400 text-white hover:scale-105 transition"
+            className="hidden md:block rounded-[40px] px-5 py-3 bg-gradient-to-r  text-white hover:scale-105 transition"
             style={{
               borderRadius: "40px",
               background:
                 "linear-gradient(265deg, #F6EE59 -24.03%, #FF3000 111.01%)",
-            }}>
+            }}
+          >
             İletişime Geçin
           </Link>
         </div>
 
         {user ? (
           <div className="relative">
-            <button onClick={toggleProfileDropdown} className="flex items-center gap-2 text-white">
+            <button onClick={toggleProfileDropdown} className="flex items-center gap-2 text-white hover:60px ">
               <Image
-                src="/images/.png"
+                src="/images/avatar.jpeg"
                 alt="Profil"
                 width={30}
                 height={30}
@@ -150,10 +170,10 @@ export default function Navbar() {
             </button>
             {showProfileDropdown && (
               <div className="absolute right-0 mt-2 bg-gray-800 text-white rounded shadow-lg">
-                <Link href="/user/profil" className="block px-4 py-2 hover:bg-gray-700">
+                <Link href="/account-transactions/profil" className="block px-4 py-2 hover:bg-gray-700">
                   Profil Ayarları
                 </Link>
-                <Link href="/user/account" className="block px-4 py-2 hover:bg-gray-700">
+                <Link href="/account-transactions/account" className="block px-4 py-2 hover:bg-gray-700">
                   Hesap Ayarları
                 </Link>
                 <button
@@ -168,13 +188,13 @@ export default function Navbar() {
         ) : (
           <div className="hidden md:flex gap-4">
             <Link
-              href="/register-g"
+              href="/account-transactions/register"
               className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
             >
               Kayıt Ol
             </Link>
             <Link
-              href="/login-g"
+              href="/account-transactions/login"
               className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
             >
               Giriş Yap
@@ -192,11 +212,7 @@ export default function Navbar() {
         <Link href="/zonelar" className="block py-2 hover:text-orange-500">
           Zonelar
         </Link>
-        <Link href="/hakkimizda" className="block py-2 hover:text-orange-500 " style={{
-                    borderRadius: "40px",
-                    background:
-                      "linear-gradient(265deg, #F6EE59 -24.03%, #FF3000 111.01%)",
-                  }}>
+        <Link href="/hakkimizda" className="block py-2 hover:text-orange-500">
           Hakkımızda
         </Link>
         <Link href="/blog" className="block py-2 hover:text-orange-500">
@@ -252,7 +268,7 @@ export default function Navbar() {
               onClick={handleLogout}
               className="block mt-2 px-4 py-2 text-left hover:bg-gray-700"
             >
-              Çıkış Yap 
+              Çıkış Yap
             </button>
           </div>
         )}

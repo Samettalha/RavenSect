@@ -20,7 +20,7 @@ export default function GoogleMapsProvider() {
     // Set the initial height
     updateMapHeight();
 
-    // Update height on window resize
+    // Update height on window resize he he hebele hübele
     window.addEventListener("resize", updateMapHeight);
 
     // Clean up the event listener on component unmount

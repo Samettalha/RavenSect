@@ -1,4 +1,5 @@
-import { supabase } from 'lib/supabase';
+import { supabase } from '../../lib/supabase'; // doğru yol
+
 abase
 function MyApp({ Component, pageProps }) {
   return (
