@@ -57,11 +57,11 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br relative">
       <div
-        className="absolute inset-0 bg-[url('/images/register.jpg')] bg-cover bg-center opacity-100"
-        style={{ filter: "blur(8px)" }}
+        className="absolute inset-0 bg-[url('/images/register.jpg')] bg-cover bg-center opacity-30"
+        style={{ filter: "blur(3px)" }}
         aria-hidden="true"
       ></div>
-      <div className="bg-gray-900 bg-opacity-60 backdrop-blur-lg border border-gray-400 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
+      <div className="bg-gray-900 bg-opacity-60 backdrop-blur  border border-green-400 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
         <h2 className="text-3xl font-extrabold mb-6 text-orange-500">Giriş Yap</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
         <form onSubmit={handleLogin}>

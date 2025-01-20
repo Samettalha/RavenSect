@@ -91,8 +91,7 @@ export default function Navbar() {
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
       style={{
-        background: `rgba(0, 0, 0, 0.2)`,
-      }}
+        background: `rgba(0, 0, 0, 0.2)`,}}
     >
       <div className="container mx-auto flex justify-between items-center h-20 px-7">
         <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
@@ -100,7 +99,7 @@ export default function Navbar() {
             <Image
               src="/images/zainex.png"
               alt="Zainex Logo"
-              width={260}
+              width={210}
               height={50}
               className="cursor-pointer -ml-4"
             />
@@ -170,10 +169,10 @@ export default function Navbar() {
             </button>
             {showProfileDropdown && (
               <div className="absolute right-0 mt-2 bg-gray-800 text-white rounded shadow-lg">
-                <Link href="/account-transactions/profil" className="block px-4 py-2 hover:bg-gray-700">
+                <Link href="/user/profil" className="block px-4 py-2 hover:bg-gray-700">
                   Profil Ayarları
                 </Link>
-                <Link href="/account-transactions/account" className="block px-4 py-2 hover:bg-gray-700">
+                <Link href="/user/account" className="block px-4 py-2 hover:bg-gray-700">
                   Hesap Ayarları
                 </Link>
                 <button

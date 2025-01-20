@@ -38,7 +38,7 @@ function AccountSettings() {
       </div>
 
       {/* Kullanıcı Bilgileri */}
-      <div className="mb-6">
+      <div className="mb-2">
         <label className="block text-orange-600 font-medium mb-2">Kullanıcı Adı</label>
         <input
           type="text"
