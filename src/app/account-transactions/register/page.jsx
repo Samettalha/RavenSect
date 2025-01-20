@@ -71,7 +71,7 @@ const Register = () => {
       {/* Arka plan */}
       <div
         className="absolute inset-0 bg-[url('/images/register.jpg')] bg-cover bg-center opacity-100"
-        style={{ filter: "blur(0px)" }}
+        style={{ filter: "blur(4px)" }}
         aria-hidden="true"
       ></div>
       {/* Kayıt kutusu */}

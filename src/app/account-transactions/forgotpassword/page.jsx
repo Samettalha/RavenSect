@@ -40,7 +40,7 @@ const ForgotPassword = () => {
         <form onSubmit={handlePasswordReset}>
           <input
             type="email"
-            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="bg-transparent border w-full p-3 mb-4 rounded  text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
             placeholder="E-posta adresinizi girin"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
