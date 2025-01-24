@@ -7,7 +7,7 @@ export default function HomePageAdvantage() {
         ve macerayla harmanlayarrak doruklarda deneyimlemeye hazır mısın? 
       </p>
       <p className="text-center max-w-[1000px] text-[#F8F8F8] text-base sm:text-2xl font-normal">
-        Üstelik her baklava yiyisinizde mutlu oluyorsunuz amk artık pushalndığını burdan anlıyom sikeyim böyle yapılan işi
+       nabeeeeeeeeeeeeeeeeeeeeeer
       </p>
     </div>
   );

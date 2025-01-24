@@ -1,142 +1,135 @@
 "use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { supabase } from "../../../lib/supabase";
-import Link from 'next/link';  // Link bileşenini import edin
-import { FaGoogle, FaGithub, FaFacebook, FaXing } from "react-icons/fa"; // React Icons
+import React, { useState } from "react";
 
-const Login = () => {
+function AccountSettings() {
+  const [profilePic, setProfilePic] = useState(null);
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
+  const [is2FAEnabled, setIs2FAEnabled] = useState(false);
 
-  // Normal giriş işlemi
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
+  const handleFileChange = (e) => {
+    setProfilePic(URL.createObjectURL(e.target.files[0]));
+  };
 
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-    
-      if (error) {
-        console.error("Giriş hatası:", error); // Detaylı log
-        throw new Error(error.message); // Hata mesajını göster
-      }
-    
-      const { user } = data;
-      if (!user) {
-        throw new Error("Kullanıcı bulunamadı. Lütfen kayıt olun.");
-      }
-    
-      console.log("Giriş başarılı:", user);
-      router.push("/welcome");
-    } catch (err) {
-      setError(err.message);
-    }
-    
-    };
-
-  // Sosyal medya ile giriş yapma
-  const handleSocialLogin = async (provider) => {
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: provider, // Hangi sağlayıcıyı kullanıyorsa
-      });
-
-      if (error) {
-        throw new Error(error.message);
-      }
-    } catch (err) {
-      setError(err.message); // Hata varsa, kullanıcıya göster
-    }
+  const handleSave = () => {
+    console.log("Kullanıcı bilgileri kaydedildi.");
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br relative">
-      <div
-        className="absolute inset-0 bg-[url('/images/register.jpg')] bg-cover bg-center opacity-30"
-        style={{ filter: "blur(3px)" }}
-        aria-hidden="true"
-      ></div>
-      <div className="bg-gray-900 bg-opacity-60 backdrop-blur text-white border  border-green-400 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
-        <h2 className="text-3xl font-extrabold mb-6 text-orange-500">Giriş Yap</h2>
-        {error && <div className="text-red-500 mb-4">{error}</div>}
-        <form onSubmit={handleLogin}>     
-          <input
-            type="email"
-            className="bg-transparent border w-full p-3 mb-4 text-white rounded focus:outline-none focus:ring-3 focus:ring-purple-500"
-            placeholder="E-posta"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            className="bg-transparent border w-full p-3 mb-4 text-white rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
-            placeholder="Şifre"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button
-            type="submit"
-            className="w-full bg-orange-500 text-white p-3 rounded hover:bg-orange-600 transition disabled:opacity-50"
-            disabled={loading}
-          >
-            {loading ? "Yükleniyor..." : "Giriş Yap"}
-          </button>
-        </form>
+    <div className="container mx-auto p-6">
+      <h1 className="text-3xl font-semibold text-gray-800 mb-6">Hesap Ayarları</h1>
 
-        {/* Sosyal medya butonları */}
-        <div className="mt-6 flex justify-around">
-          <button
-            onClick={() => handleSocialLogin('google')}
-            className="bg-blue-500 text-white p-3 rounded-full hover:bg-blue-600 transition flex items-center justify-center"
-            aria-label="Google ile Kayıt Ol"
-          >
-            <FaGoogle />
-          </button>
-          <button
-            onClick={() => handleSocialLogin('github')}
-            className="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900 transition flex items-center justify-center"
-            aria-label="GitHub ile Kayıt Ol"
-          >
-            <FaGithub />
-          </button>
-          <button
-            onClick={() => handleSocialLogin('facebook')}
-            className="bg-blue-700 text-white p-3 rounded-full hover:bg-blue-800 transition flex items-center justify-center"
-            aria-label="Facebook ile Kayıt Ol"
-          >
-            <FaFacebook />
-          </button>
-          <button
-            onClick={() => handleSocialLogin('X')}
-            className="bg-black text-white p-3 rounded-full hover:bg-gray-800 transition flex items-center justify-center"
-            aria-label="X ile Kayıt Ol"
-          >
-            <FaXing />
-          </button>
+      {/* Profil Fotoğrafı ve Yükleme Butonu */}
+      <div className="flex items-center flex-col sm:flex-row mb-6">
+        <div className="w-24 h-24 rounded-full overflow-hidden mb-4 sm:mb-0 sm:mr-4">
+          {profilePic ? (
+            <img src={profilePic} alt="Profile" className="w-full h-full object-cover" />
+          ) : (
+            <div className="w-full h-full bg-gray-300 flex items-center justify-center text-white font-bold">P</div>
+          )}
         </div>
-        <p className="text-sm text-purple-400 mt-4 text-center">
-          Şifrenizi mi unuttunuz?{" "}
-           <Link href="/account-transactions/forgotpassword" className="text-orange-500 cursor-pointer hover:underline">
-             Şifre Yenile
-          </Link>
-        </p>
+        <input
+          type="file"
+          onChange={handleFileChange}
+          className="border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-500 w-full sm:w-auto"
+        />
+      </div>
 
-        <p className="text-sm text-white mt-4 text-center">
-          Hesabın yok mu?{" "}
-          <Link href="/account-transactions/register" className="text-orange-500 cursor-pointer hover:underline">
-             Kayıt Ol
-         </Link>
-        </p>
+      {/* Kullanıcı Bilgileri */}
+      <div className="mb-2">   
+        <label className="block text-orange-600 font-medium mb-2">Kullanıcı Adı</label>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="border p-2 w-full rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-800"
+          placeholder="Kullanıcı adınızı girin"
+        />
+      </div>
+
+      <div className="mb-6">
+        <label className="block text-orange-600 font-medium mb-2">E-posta</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="border p-2 w-full rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-800"
+          placeholder="E-posta adresinizi girin"
+        />
+      </div>
+
+      <div className="mb-6">
+        <label className="block text-orange-600 font-medium mb-2">Telefon Numarası</label>
+        <input
+          type="text"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          className="border p-2 w-full rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-800"
+          placeholder="Telefon numaranızı girin"
+        />
+      </div>
+
+      <div className="mb-6">
+        <label className="block text-orange-600 font-medium mb-2">Şifre</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="border p-2 w-full rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-800"
+          placeholder="Yeni şifrenizi girin"
+        />
+      </div>
+
+      {/* Güvenlik Ayarları */}
+      <div className="flex items-center mb-6">
+        <input
+          type="checkbox"
+          checked={is2FAEnabled}
+          onChange={() => setIs2FAEnabled(!is2FAEnabled)}
+          className="mr-2"
+        />
+        <label className="text-orange-600">İki Adımlı Doğrulama (2FA) Aktif Et</label>
+      </div>
+
+      {/* Dil ve Tema Seçenekleri */}
+      <div className="mb-6">
+        <label className="block text-orange-600 font-medium mb-2">Dil Tercihi</label>
+        <select
+          className="border p-2 w-full rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-800"
+        >
+          <option value="tr">Türkçe</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+
+      <div className="mb-6">
+        <label className="block text-orange-600 font-medium mb-2">Tema</label>
+        <select
+          className="border p-2 w-full rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-800"
+        >
+          <option value="dark">Koyu</option>
+          <option value="light">Açık</option>
+        </select>
+      </div>
+
+      {/* Kaydet Butonu */}
+      <div className="flex justify-end">
+        <button
+          onClick={handleSave}
+          className=" text-white px-6 py-2 rounded hover:bg-orange-700 transition duration-300"
+          style={{
+            borderRadius: "40px",
+            background:
+              "linear-gradient(265deg, #F6EE59 -24.03%, #FF3000 111.01%)",
+             }}
+          >
+          Kaydet
+        </button>
       </div>
     </div>
   );
-};
+}
 
-export default Login;
+export default AccountSettings;

@@ -71,11 +71,11 @@ const Register = () => {
       {/* Arka plan */}
       <div
         className="absolute inset-0 bg-[url('/images/register.jpg')] bg-cover bg-center opacity-100"
-        style={{ filter: "blur(4px)" }}
+        style={{ filter: "blur(3px)" }}
         aria-hidden="true"
       ></div>
       {/* Kayıt kutusu */}
-      <div className="bg-gray-900 bg-opacity-20 backdrop-blur-sm border border-gray-200 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
+      <div className="bg-gray-900 bg-opacity-60 backdrop-blur-sm border text-white border-gray-500 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
         <h2 className="text-3xl font-extrabold mb-6 text-orange-500">Kayıt Ol</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
         {emailSent && (
