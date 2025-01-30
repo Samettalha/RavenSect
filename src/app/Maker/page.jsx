@@ -48,53 +48,6 @@ export default function ElectronicsPage() {
     kullanımı üzerinde çalışırken, elektronik mühendisleri daha çok devreler, yarı iletkenler ve dijital sistemler gibi
     küçük ölçekli sistemlere odaklanır.
   </p>
-  {/* ulan ne imgemiş ya bi çaılşmadın laaa
-    <div className=" items-center">
-              <Image
-                src="/images/yazılım1.jpeg"
-                alt="Elektrik Nedir"
-                width={400}
-                height={300}
-                className="image-center"
-              />
-
-    </div>
-    */}
-  <h3 className="text-2xl font-semibold text-center text-orange-500 mt-8">Elektrik Elektronik Mühendisinin Görevleri</h3>
-  <ul className="list-disc pl-8 text-gray-400 mt-4 max-w-4xl mx-auto">
-    <li><strong>Elektriksel Sistem Tasarımı:</strong> Elektrik mühendisleri, evler, fabrikalar ve büyük endüstriyel tesislerdeki elektrik sistemlerini tasarlar. Bu sistemlerin güvenli ve verimli bir şekilde çalışması sağlanır.</li>
-    <li><strong>Elektronik Devre Tasarımı ve Geliştirilmesi:</strong> Elektronik mühendisleri, elektronik cihazların içindeki devreleri tasarlar. Bu, küçük bir mikroişlemciden büyük bir robot sistemine kadar her şeyi kapsar.</li>
-    <li><strong>Yarı İletkenler ve Mikroişlemciler:</strong> Elektronik mühendisleri, entegre devreler ve mikroişlemcilerle çalışan cihazları geliştiren kişilerdir. Bu alan, günümüzde teknoloji dünyasında devrim yaratan birçok gelişmeyi içermektedir.</li>
-    <li><strong>Sinyal İşleme ve İletişim Sistemleri:</strong> Elektronik mühendisleri, sinyalleri analiz eder ve işleme sistemleri tasarlar. Bu alanda telefonlar, internet bağlantıları, uydu iletişimi gibi alanlarda önemli işler yapılır.</li>
-    <li><strong>Yapay Zeka ve Otomasyon:</strong> Elektrik elektronik mühendisleri, yapay zeka ve robotik sistemleri geliştirmek ve uygulamak için çalışabilirler. Bu teknoloji, fabrikalarda otomatik üretim sistemleri ve akıllı evler gibi alanlarda yaygın olarak kullanılır.</li>
-    <li><strong>Enerji Sistemleri ve Yenilenebilir Enerji:</strong> Elektrik mühendisleri, enerji üretimi ve dağıtımına yönelik sistemler tasarlar. Ayrıca yenilenebilir enerji kaynakları (güneş, rüzgar gibi) üzerine projeler geliştirebilirler.</li>
-    <li><strong>Test ve Arıza Tespiti:</strong> Elektrik ve elektronik mühendisleri, cihazların ve sistemlerin düzgün çalışıp çalışmadığını test eder, olası arızaları tespit eder ve çözümler geliştirir.</li>
-  </ul>
-
-  <h3 className="text-2xl font-semibold text-center text-orange-500 mt-8">Elektrik Elektronik Mühendisi Nasıl Olunur?</h3>
-  <ol className="list-decimal pl-8 text-gray-400 mt-4 max-w-4xl mx-auto">
-    <li><strong>Eğitim:</strong> Elektrik ve elektronik mühendisliği alanında çalışabilmek için genellikle üniversitelerin mühendislik fakültelerinde bu alanda lisans eğitimi alınması gereklidir.</li>
-    <li><strong>Yüksek Lisans ve Doktora:</strong> Lisans eğitimi sonrasında, daha derinlemesine bir bilgi edinmek ve uzmanlaşmak isteyen mühendisler, yüksek lisans veya doktora yapabilirler.</li>
-    <li><strong>Staj ve Deneyim:</strong> Üniversite eğitimi sırasında staj yapmak, pratik deneyim kazanmak ve iş dünyasına adım atmak için önemlidir.</li>
-    <li><strong>Sertifikalar ve Sürekli Eğitim:</strong> Elektrik ve elektronik mühendisliği hızla gelişen bir alandır. Bu yüzden mühendisler, yeni teknolojilere adapte olabilmek için düzenli olarak eğitim almalı ve sertifikalar kazanmalıdır.</li>
-  </ol>
-
-
-  <h3 className="text-2xl font-semibold text-center text-orange-500 mt-8">Elektrik Elektronik Mühendisinin Çalıştığı Alanlar</h3>
-  <ul className="list-disc pl-8 text-gray-400 mt-4 max-w-4xl mx-auto">
-    <li>Otomotiv Sektörü: Elektrikli araçlar, otomatik pilot sistemleri, araç içi elektronikler.</li>
-    <li>Tüketici Elektroniği: Akıllı telefonlar, televizyonlar, bilgisayarlar, giyilebilir teknolojiler.</li>
-    <li>Yenilenebilir Enerji: Güneş enerjisi, rüzgar enerjisi gibi alanlarda çalışmak.</li>
-    <li>Telekomünikasyon: İletişim altyapıları, mobil iletişim, internet hizmetleri.</li>
-    <li>Robotik ve Otomasyon: Endüstriyel otomasyon, robot tasarımı ve üretimi.</li>
-    <li>Savunma Sanayi: Radar sistemleri, elektronik harp, füze sistemleri.</li>
-    <li>Sağlık Teknolojileri: Tıbbi cihazlar, sağlık sistemleri tasarımı.</li>
-  </ul>
-
-  <p className="text-gray-400 text-center mt-8 max-w-4xl mx-auto">
-    Elektrik elektronik mühendisliği, her geçen gün daha önemli hale gelen bir alan olup, teknoloji ile iç içe geçmiş bir kariyer
-    yoludur. Gelişen teknoloji ile birlikte, mühendislerin de yeni yenilikçi çözümler üreterek dünya çapında etki yaratmaları beklenmektedir.
-  </p>
 </section>
 
         <br></br>
@@ -113,7 +66,7 @@ export default function ElectronicsPage() {
                 title: "Devre Çizimleri",
                 description: "Temel ve gelişmiş devre çizimlerini öğrenin.",
                 href: "/electronics/circuit",
-                imgSrc: "/images/register.jpg", // Resim kaynağı
+                imgSrc: "/images/register.jpg", // Resim kaynağıo zaman s
               },
               {
                 title: "Komponent Bilgileri",
