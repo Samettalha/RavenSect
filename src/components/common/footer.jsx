@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="flex justify-center items-center p-5 gap-x-6">
             {/* Twitter Linki */}
             <Link
-              href="https://twitter.com/Samet_Talha_K" // Twitter profil linki
+              href="https://x.com/ravensect36847" // Twitter profil linki
               target="_blank"  // Yeni sekmede açılır
               rel="noopener noreferrer"  // Güvenlik için
             >
@@ -46,7 +46,7 @@ export default function Footer() {
 
             {/* Instagram Linki */}
             <Link
-              href="https://www.instagram.com/s.t_kavutcu/?next=%2F"  // Instagram profil linki
+              href="https://www.instagram.com/raven_sect/"  // Instagram profil linki
               target="_blank"  // Yeni sekmede açılır
               rel="noopener noreferrer"  // Güvenlik için
             >

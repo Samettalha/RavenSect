@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function AboutUsStats() {
   return (
-    <div className="flex items-center justify-center w-full bg-black">
+    <div className="flex items-center justify-center w-full ">
       <div className="flex flex-col xl:flex-row w-full max-w-[1500px] px-2">
         <div className="w-full xl:w-1/2 relative">
           <div className="w-full px-5">
@@ -20,7 +20,7 @@ export default function AboutUsStats() {
         </div>
         <div className="w-full xl:w-1/2 flex flex-col text-center sm:text-left items-center sm:items-start justify-center xl:justify-start gap-5 mt-10 text-white px-5 z-10">
           <p className="text-2xl xl:max-w-[400px] text-red-500">
-            Hepimiz pırlanta gibi gençlerdik :D{" "}
+            Alışılmışın dışındayız{" "}
             <span className="font-medium text-red-600"> Taki bir gün...</span>
           </p>
           <p className="xl:max-w-[530px]">

@@ -96,7 +96,7 @@ export default function Navbar() {
         <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
           <Link href="/">
             <Image
-              src="/images/logo1.png"
+              src="/images/logo3.png"
               alt="RavenSect Logo"
               width={310}
               height={70}

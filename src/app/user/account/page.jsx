@@ -122,7 +122,7 @@ function AccountSettings() {
           style={{
             borderRadius: "40px",
             background:
-              "linear-gradient(265deg, #F6EE59 -24.03%, #FF3000 111.01%)",
+              "linear-gradient(265deg,rgb(189, 15, 15) -24.03%,rgb(14, 8, 7) 111.01%)",
              }}
           >
           Kaydet
