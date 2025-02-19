@@ -10,9 +10,9 @@ export default function WelcomePage() {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5 }}
-        className="text-5xl md:text-7xl font-bold tracking-wide text-orange-500"
+        className="text-5xl md:text-7xl font-bold tracking-wide text-red-700"
       >
-        Welcome to Zainex
+        Welcome to RavenSect
       </motion.h1>
 
       {/* Animated Subtext */}
@@ -34,7 +34,7 @@ export default function WelcomePage() {
       >
         <a
           href="/"
-          className="px-6 py-3 bg-orange-500 text-black rounded-lg shadow-lg hover:bg-orange-400 transition-all duration-300"
+          className="px-6 py-3 bg-red-500 text-black rounded-lg shadow-lg hover:bg-red-400 transition-all duration-300"
         >
           Explore Now
         </a>
