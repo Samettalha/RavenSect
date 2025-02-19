@@ -1,9 +1,9 @@
-"use client";
+"use client"; 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabase";
-import Link from 'next/link';  // Link bileşenini import edin
-import { FaGoogle, FaGithub, FaFacebook, FaXing } from "react-icons/fa"; // React Icons
+import Link from 'next/link';  
+import { FaGoogle, FaGithub, FaFacebook, FaXing } from "react-icons/fa"; 
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,7 +12,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  // Normal giriş işlemi
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -22,8 +21,8 @@ const Login = () => {
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     
       if (error) {
-        console.error("Giriş hatası:", error); // Detaylı log
-        throw new Error(error.message); // Hata mesajını göster
+        console.error("Giriş hatası:", error); 
+        throw new Error(error.message);
       }
     
       const { user } = data;
@@ -36,38 +35,36 @@ const Login = () => {
     } catch (err) {
       setError(err.message);
     }
-    
-    };
+  };
 
-  // Sosyal medya ile giriş yapma
   const handleSocialLogin = async (provider) => {
     try {
       const { error } = await supabase.auth.signInWithOAuth({
-        provider: provider, // Hangi sağlayıcıyı kullanıyorsa
+        provider: provider, 
       });
 
       if (error) {
         throw new Error(error.message);
       }
     } catch (err) {
-      setError(err.message); // Hata varsa, kullanıcıya göster
+      setError(err.message); 
     }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br relative">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-black via-red-800 to-gray-900 relative">
       <div
-        className="absolute inset-0 bg-[url('/images/register.jpg')] bg-cover bg-center opacity-30"
-        style={{ filter: "blur(3px)" }}
+        className="absolute inset-0 bg-[url('/images/horror-bg.jpg')] bg-cover bg-center opacity-60"
+        style={{ filter: "blur(4px)" }}
         aria-hidden="true"
       ></div>
-      <div className="bg-gray-900 bg-opacity-60 backdrop-blur text-white border  border-green-400 p-8 rounded-lg shadow-lg max-w-sm w-full relative z-10">
-        <h2 className="text-3xl font-extrabold mb-6 text-orange-500">Giriş Yap</h2>
+      <div className="bg-gray-900 bg-opacity-70 backdrop-blur text-white border  border-red-500 p-8 rounded-lg shadow-2xl max-w-sm w-full relative z-10">
+        <h2 className="text-3xl font-extrabold mb-6 text-red-500">Giriş Yap</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
         <form onSubmit={handleLogin}>     
           <input
             type="email"
-            className="bg-transparent border w-full p-3 mb-4 text-white rounded focus:outline-none focus:ring-3 focus:ring-purple-500 text-white"
+            className="bg-transparent border w-full p-3 mb-4 text-white rounded focus:outline-none focus:ring-3 focus:ring-red-500"
             placeholder="E-posta"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -75,7 +72,7 @@ const Login = () => {
           />
           <input
             type="password"
-            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
+            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500 text-white"
             placeholder="Şifre"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -83,7 +80,7 @@ const Login = () => {
           />
           <button
             type="submit"
-            className="w-full bg-orange-500 text-white p-3 rounded hover:bg-orange-600 transition disabled:opacity-50"
+            className="w-full bg-red-600 text-white p-3 rounded hover:bg-red-700 transition disabled:opacity-50"
             disabled={loading}
           >
             {loading ? "Yükleniyor..." : "Giriş Yap"}
@@ -121,16 +118,16 @@ const Login = () => {
             <FaXing />
           </button>
         </div>
-        <p className="text-sm text-purple-400 mt-4 text-center">
+        <p className="text-sm text-white mt-4 text-center">
           Şifrenizi mi unuttunuz?{" "}
-           <Link href="/account-transactions/forgotpassword" className="text-orange-500 cursor-pointer hover:underline">
+           <Link href="/account-transactions/forgotpassword" className="text-red-500 cursor-pointer hover:underline">
              Şifre Yenile
           </Link>
         </p>
 
         <p className="text-sm text-white mt-4 text-center">
           Hesabın yok mu?{" "}
-          <Link href="/account-transactions/register" className="text-orange-500 cursor-pointer hover:underline">
+          <Link href="/account-transactions/register" className="text-red-500 cursor-pointer hover:underline">
              Kayıt Ol
          </Link>
         </p>

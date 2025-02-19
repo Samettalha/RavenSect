@@ -3,44 +3,43 @@ import GlowingButton from "@/components/buttons/glowing-button";
 
 export default function HomePageCards() {
   return (
-    <div className="w-full py-24 min-h-screen flex flex-col gap-16 items-center justify-center text-white text-center px-5 bg-[url('/images/arkaplan14.jpg')] bg-cover bg-center">
+    <div className="w-full py-24 min-h-screen flex flex-col gap-16 items-center justify-center text-white text-center px-5 bg-[url('/images/horrorbackgraund.jpg')] bg-cover bg-center bg-blend-darken">
       <div className="flex flex-col gap-5 items-center justify-center">
-        <GlowingButton title={"Nedir"} />
-        <p className="max-w-[820px] font-semibold text-[40px] leading-[56px]">
-          Teknolojiyle Deneyim, sınırsız kaynak
+        <p className="max-w-[820px] font-semibold text-[40px] leading-[56px] text-[#FF4D00]">
+          Korku ve Gizemle Yoğunlaştırılmış Deneyim
         </p>
-        <p className="max-w-[750px]">
-          Her yaştan ziyaretçiye hem eğlenip hemde öğrenbilirsiniz
+        <p className="max-w-[750px] text-[#D3D3D3]">
+          Her yaştan ziyaretçiye hem korkuyu hem de gizemi keşfetme fırsatı.
         </p>
       </div>
 
-      <div className="flex items-center justify-between gap-16  flex-wrap max-w-[900px]">
+      <div className="flex items-center justify-between gap-16 flex-wrap max-w-[900px]">
         <HomeFeatureCard
-          imageUrl={"/svg/feature-card.svg"}
-          title={"Geniş Hedef Kitlesi"}
+          imageUrl={"/svg/horror-card-1.svg"}
+          title={"Gizemli Hedefler"}
           description={
-            "Farklı ilgi alanına hitap eden, mühendislik alanları ile sınırsınz kaynak."
+            "Farklı korku unsurlarına hitap eden, bilinmeyenle sınırsız kaynak."
           }
         />
         <HomeFeatureCard
-          imageUrl={"/svg/feature-card-2.svg"}
-          title={"Kullanıcı Etkileşimli"}
+          imageUrl={"/svg/horror-card-2.svg"}
+          title={"Korku Dolu Etkileşim"}
           description={
-            "Kullanıcıların hareketlerine ve etkileşimlerine duyarlı deneyimlerle dijital dünyanın bir parçası olun."
+            "Kullanıcıların korkuya duyarlı tepkileriyle dijital dünyanın karanlık köşelerini keşfedin."
           }
         />
         <HomeFeatureCard
-          imageUrl={"/svg/feature-card-3.svg"}
-          title={"Takım Ruhu"}
+          imageUrl={"/svg/horror-card-3.svg"}
+          title={"Karanlık Takım Ruhu"}
           description={
-            "Ekip çalışması gerektiren projelerde tam destek ile iyi bir çaılma ortamı."
+            "Ekip çalışması gerektiren projelerde korku dolu bir ortamda başarıya ulaşın."
           }
         />
         <HomeFeatureCard
-          imageUrl={"/svg/feature-card-4.svg"}
-          title={"Eğlenceli ve öğretici"}
+          imageUrl={"/svg/horror-card-4.svg"}
+          title={"Korku ve Eğlence"}
           description={
-            "Eğlence dolu ve keyifli aktivitelerle  dijital bir dünya sizi bekliyor."
+            "Korku dolu aktivitelerle sizi bekleyen dijital bir dünya."
           }
         />
       </div>

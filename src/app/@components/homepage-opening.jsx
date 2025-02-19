@@ -3,30 +3,30 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <div className="w-full h-screen ">
-      <VideoBackground videoSrc={"videos/background.mp4"}>
+    <div className="w-full h-screen bg-black">
+      <VideoBackground videoSrc={"videos/backgraund.mp4"}> {/* Korkutucu bir video arka planı ekle */}
         <div className="w-full h-full flex justify-center md:justify-start p-5 items-end">
           <div className="flex flex-col gap-5 md:ml-[20%] md:mb-[8%] max-w-[600px]">
-            <p className="font-bold text-white text-2xl md:text-4xl ">
+            <p className="font-bold text-red-600 text-2xl md:text-4xl animate-flicker">
               <span
-                className="font-bold text-[48px] md:text-[64px] md:leading-[70px]"
+                className="font-bold text-[48px] md:text-[64px] md:leading-[70px] text-white animate-flicker"
                 style={{
                   background:
-                    "linear-gradient(183deg, #FFD900 6.68%, #FF3E00 40.92%)",
+                    "linear-gradient(183deg, #FF0000 6.68%, #7A0000 40.92%)",
                   backgroundClip: "text",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
+                  textShadow: "0px 0px 5px rgba(255, 0, 0, 0.6), 0px 0px 10px rgba(255, 0, 0, 0.5)", // Daha az parlama
                   userSelect: "none",
                 }}
               >
-                TEKNOLOJININ
+                KORKUNUN
               </span>{" "}
-              KALBİNDE YERİNİ AL
+              GÖLGESİNDE
             </p>
 
-            <p className="text-base text-white">
-              Yenilikçi ve kullanıcı odaklı deneyimsel teknolojinin
-              sınırlarını zorlayacak, hem öğrenirken hem de eğlenirken
+            <p className="text-base text-white opacity-80">
+              Gerçekten test edilmek istenenler için... Karanlıkta kaybolan her şey, tekrar dönmeyecek.
             </p>
             <div className="flex flex-col sm:flex-row gap-5">
               <Link href="/hakkimizda">
@@ -35,24 +35,11 @@ export default function HomePage() {
                   style={{
                     borderRadius: "40px",
                     background:
-                      "linear-gradient(265deg, #F6EE59 -24.03%, #FF3000 111.01%)",
+                      "linear-gradient(265deg, #D40000 -24.03%, #5C0000 111.01%)",
+                    boxShadow: "0 0 10px rgba(255, 0, 0, 0.5)", // Azaltılmış parlama
                   }}
                 >
                   Daha Fazla Öğren
-                </button>
-              </Link>
-              <Link href="/iletisim">
-                <button
-                  className="text-sm font-semibold text-white w-full sm:w-[215px] h-[47px]"
-                  style={{
-                    borderRadius: "9999px",
-                    border: "0.3px solid #B3B1B1",
-                    background: "#09090B",
-                    boxShadow:
-                      "0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px 1px rgba(255, 255, 255, 0.10), 0px 0px 0px 0px #FFF",
-                  }}
-                >
-                  İletişime Geçebilirsin
                 </button>
               </Link>
             </div>

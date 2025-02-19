@@ -27,11 +27,11 @@ export default function SwiperComponent() {
 
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full w-[200px] sm:w-[480px]">
-            <SwiperSmallCard imageSrc={"/images/yazılım1.jpeg"} reverse>
+            <SwiperSmallCard imageSrc={"/images/RavenLogo.png"} reverse>
               <div className="text-center flex flex-col gap-2 sm:gap-5  text-white">
-                <div className="text-xl md:text-6xl text-[#F087FF]">kaynak sayısı</div>
+                <div className="text-xl md:text-6xl text-[#F087FF]">ziyaretci sayısı</div>
                 <div className="text-sm sm:text-base text-[#BABABA]">
-                  Sitemizi şimdiye kadarki ziyaretci sayısı 
+                  1.000.000
                 </div>
               </div>
             </SwiperSmallCard>
@@ -41,16 +41,16 @@ export default function SwiperComponent() {
 
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full  w-[380px] sm:w-[900px]">
-            <SwiperLargeCard imageSrc={"/images/yazılım1.jpeg"} />
+            <SwiperLargeCard imageSrc={"/images/RavenLogo.png"} />
           </div>
         </SwiperSlide>
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full w-[200px] sm:w-[480px]">
-            <SwiperSmallCard imageSrc={"/images/yazılım1.jpeg"}>
+            <SwiperSmallCard imageSrc={"/images/RavenLogo.png"}>
               <div className="text-center flex flex-col gap-2 sm:gap-5  text-white">
                 <div className="text-xl md:text-6xl text-[#19FB9B]">15</div>
                 <div className="text-sm sm:text-base text-[#BABABA]">
-                  Farklı mühendislik dalı
+                  Farklı oyun 
                 </div>
               </div>
             </SwiperSmallCard>
@@ -61,7 +61,7 @@ export default function SwiperComponent() {
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full w-[200px] sm:w-[480px]">
             <SwiperSmallCard
-              imageSrc={"/images/yazılım1.jpeg"}
+              imageSrc={"/images/RavenLogo.png"}
               fullImage
             ></SwiperSmallCard>
             ..{" "}
@@ -70,7 +70,7 @@ export default function SwiperComponent() {
 
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full w-[200px] sm:w-[480px]">
-            <SwiperSmallCard imageSrc={"/images/yazılım1.jpeg"} reverse>
+            <SwiperSmallCard imageSrc={"/images/RavenLogo.png"} reverse>
               <div className="text-center flex flex-col gap-2 sm:gap-5  text-white">
                 <div className="text-xl md:text-6xl text-[#FFEB3B]">40</div>
                 <div className="text-sm sm:text-base text-[#BABABA]">
@@ -84,13 +84,13 @@ export default function SwiperComponent() {
 
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full  w-[380px] sm:w-[900px] ">
-            <SwiperLargeCard imageSrc={"/images/yazılım1.jpeg"} />
+            <SwiperLargeCard imageSrc={"/images/RavenLogo.png"} />
           </div>
         </SwiperSlide>
 
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full w-[200px] sm:w-[480px]">
-            <SwiperSmallCard imageSrc={"/images/yazılım1.jpeg"}>
+            <SwiperSmallCard imageSrc={"/images/RavenLogo.png"}>
               <div className="text-center flex flex-col gap-2 sm:gap-5  text-white">
                 <div className="text-xl md:text-6xl text-[#00BCD4]">
                   7’den 70’e
@@ -107,7 +107,7 @@ export default function SwiperComponent() {
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full w-[200px] sm:w-[480px]">
             <SwiperSmallCard
-              imageSrc={"/images/yazılım1.jpeg"}
+              imageSrc={"/images/RavenLogo.png"}
               fullImage
             ></SwiperSmallCard>
             ..{" "}
@@ -116,7 +116,7 @@ export default function SwiperComponent() {
 
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full w-[200px] sm:w-[480px]">
-            <SwiperSmallCard imageSrc={"/images/yazılım1.jpeg"} reverse>
+            <SwiperSmallCard imageSrc={"/images/RavenLogo.png"} reverse>
               <div className="text-center flex flex-col gap-2 sm:gap-5  text-white">
                 <div className="text-xl md:text-6xl text-[#F087FF]">12,237</div>
                 <div className="text-sm sm:text-base text-[#BABABA]">
@@ -130,12 +130,12 @@ export default function SwiperComponent() {
 
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full  w-[380px] sm:w-[900px]">
-            <SwiperLargeCard imageSrc={"/images/yazılım1.jpeg"} />
+            <SwiperLargeCard imageSrc={"/images/RavenLogo.png"} />
           </div>
         </SwiperSlide>
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full w-[200px] sm:w-[480px]">
-            <SwiperSmallCard imageSrc={"/images/yazılım1.jpeg"}>
+            <SwiperSmallCard imageSrc={"/images/RavenLogo.png"}>
               <div className="text-center flex flex-col gap-2 sm:gap-5  text-white">
                 <div className="text-xl md:text-6xl text-[#19FB9B]">8</div>
                 <div className="text-sm sm:text-base text-[#BABABA]">
@@ -150,7 +150,7 @@ export default function SwiperComponent() {
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full w-[200px] sm:w-[480px]">
             <SwiperSmallCard
-              imageSrc={"/images/yazılım1.jpeg"}
+              imageSrc={"/images/RavenLogo.png"}
               fullImage
             ></SwiperSmallCard>
             ..{" "}
@@ -159,7 +159,7 @@ export default function SwiperComponent() {
 
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full w-[200px] sm:w-[480px]">
-            <SwiperSmallCard imageSrc={"/images/yazılım1.jpeg"} reverse>
+            <SwiperSmallCard imageSrc={"/images/RavenLogo.png"} reverse>
               <div className="text-center flex flex-col gap-2 sm:gap-5  text-white">
                 <div className="text-xl md:text-6xl text-[#FFEB3B]">12</div>
                 <div className="text-sm sm:text-base text-[#BABABA]">
@@ -173,13 +173,13 @@ export default function SwiperComponent() {
 
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full  w-[380px] sm:w-[900px] ">
-            <SwiperLargeCard imageSrc={"/images/yazılım1.jpeg"} />
+            <SwiperLargeCard imageSrc={"/images/RavenLogo.png"} />
           </div>
         </SwiperSlide>
 
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full w-[200px] sm:w-[480px]">
-            <SwiperSmallCard imageSrc={"/images/yazılım1.jpeg"}>
+            <SwiperSmallCard imageSrc={"/images/RavenLogo.png"}>
               <div className="text-center flex flex-col gap-2 sm:gap-5  text-white">
                 <div className="text-xl md:text-6xl text-[#00BCD4]">
                   7’den 70’e
@@ -196,7 +196,7 @@ export default function SwiperComponent() {
         <SwiperSlide style={{ width: "auto" }}>
           <div className="h-full w-[200px] sm:w-[480px]">
             <SwiperSmallCard
-              imageSrc={"/images/yazılım1.jpeg"}
+              imageSrc={"/images/RavenLogo.png"}
               fullImage
             ></SwiperSmallCard>
             ..{" "}

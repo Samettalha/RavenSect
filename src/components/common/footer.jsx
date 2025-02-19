@@ -9,7 +9,7 @@ export default function Footer() {
       <Link href="/">
         <Image
       
-           src="/images/zainex.png"  // Logo görseli
+           src="/images/RavenLogo.png"  // Logo görseli
           alt="10XP X"          // Görselin açıklaması
           width={300}                 // Genişlik
           height={35}                 // Yükseklik

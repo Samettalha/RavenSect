@@ -1,5 +1,4 @@
-"use client"; // İstemci tarafında çalıştırılması gereken bileşen.
-
+"use client"; 
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
@@ -11,15 +10,15 @@ import { supabase } from "../../lib/supabase";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [showProfileDropdown, setShowProfileDropdown] = useState(false); // Profil dropdown state
-  const [isVisible, setIsVisible] = useState(true); // Navbar görünürlüğü için state
-  const [lastScrollY, setLastScrollY] = useState(0); // Son kaydırma pozisyonu
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false); 
+  const [isVisible, setIsVisible] = useState(true); 
+  const [lastScrollY, setLastScrollY] = useState(0); 
   const pathname = usePathname();
   const router = useRouter();
   const [user, setUser] = useState(null);
-  const [username, setUsername] = useState(null); // Kullanıcı adı için state
+  const [username, setUsername] = useState(null);
 
-  // Kullanıcı verilerini al
+
   useEffect(() => {
     const getUser = async () => {
       const {
@@ -56,24 +55,24 @@ export default function Navbar() {
 
   const toggleProfileDropdown = () => {
     setShowProfileDropdown(!showProfileDropdown);
-    setShowDropdown(false); // Menü dropdown kapalı kalmalı
+    setShowDropdown(false); 
   };
 
   const toggleMenuDropdown = () => {
     setShowDropdown(!showDropdown);
-    setShowProfileDropdown(false); // Profil dropdown kapalı kalmalı
+    setShowProfileDropdown(false); 
   };
 
   const isActive = (path) =>
-    pathname === path ? "text-orange-500" : "text-white";
+    pathname === path ? "text-red-500" : "text-white";
 
-  // Kaydırma davranışını izlemek için useEffect
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY && window.scrollY > 100) {
-        setIsVisible(false); // Aşağı kaydırırken navbar gizlenir
+        setIsVisible(false);
       } else {
-        setIsVisible(true); // Yukarı kaydırırken navbar görünür
+        setIsVisible(true); 
       }
       setLastScrollY(window.scrollY);
     };
@@ -97,10 +96,10 @@ export default function Navbar() {
         <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
           <Link href="/">
             <Image
-              src="/images/zainex.png"
-              alt="Zainex Logo"
-              width={210}
-              height={50}
+              src="/images/logo1.png"
+              alt="RavenSect Logo"
+              width={310}
+              height={70}
               className="cursor-pointer -ml-4"
             />
           </Link>
@@ -110,32 +109,26 @@ export default function Navbar() {
         </div>
         {/* Desktop Menü */}
         <div className="hidden md:flex gap-12 text-white font-semibold items-center justify-center flex-1">
-          <Link href="/zonelar" className={`${isActive("/zonelar")} hover:text-orange-500`}>
-            Zonelar
-          </Link>
-          <Link href="/hakkimizda" className={`${isActive("/hakkimizda")} hover:text-orange-500`}>
+          <Link href="/hakkimizda" className={`${isActive("/hakkimizda")} hover:text-red-500`}>
             Hakkımızda
-          </Link>
-          <Link href="/blog" className={`${isActive("/blog")} hover:text-orange-500`}>
-            Blog
           </Link>
           <div className="relative">
             <button
               onClick={toggleMenuDropdown}
-              className="flex items-center text-white hover:text-orange-500"
+              className="flex items-center text-white hover:text-red-500"
             >
               Menü
               <FiChevronDown />
             </button>
             {showDropdown && (
               <div className="absolute right-0 mt-2 bg-gray-800 text-white rounded shadow-lg">
-                <Link href="/Maker" className="block px-4 py-2 hover:bg-gray-700">
+                <Link href="/oyunlar" className="block px-4 py-2 hover:bg-gray-700">
                   Maker
                 </Link>
-                <Link href="/menu-item2" className="block px-4 py-2 hover:bg-gray-700">
+                <Link href="/empty" className="block px-4 py-2 hover:bg-gray-700">
                   Menü Item 2
                 </Link>
-                <Link href="/menu-item3" className="block px-4 py-2 hover:bg-gray-700">
+                <Link href="/empty" className="block px-4 py-2 hover:bg-gray-700">
                   Menü Item 3
                 </Link>
               </div>
@@ -147,7 +140,7 @@ export default function Navbar() {
             style={{
               borderRadius: "40px",
               background:
-                "linear-gradient(265deg, #F6EE59 -24.03%, #FF3000 111.01%)",
+                "linear-gradient(265deg,rgb(0, 0, 0) -24.03%,rgb(187, 38, 5) 111.01%)",
             }}
           >
             İletişime Geçin
@@ -188,7 +181,7 @@ export default function Navbar() {
           <div className="hidden md:flex gap-4">
             <Link
               href="/account-transactions/register"
-              className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
+              className="bg-[#b30000] text-white px-4 py-2 rounded hover:bg-red-100"
             >
               Kayıt Ol
             </Link>
@@ -208,19 +201,19 @@ export default function Navbar() {
           isOpen ? "block" : "hidden"
         } md:hidden text-white bg-gray-800 p-5 border-t border-gray-700`}
       >
-        <Link href="/zonelar" className="block py-2 hover:text-orange-500">
+        <Link href="/zonelar" className="block py-2 hover:text-red-500">
           Zonelar
         </Link>
-        <Link href="/hakkimizda" className="block py-2 hover:text-orange-500">
+        <Link href="/hakkimizda" className="block py-2 hover:text-red-500">
           Hakkımızda
         </Link>
-        <Link href="/blog" className="block py-2 hover:text-orange-500">
+        <Link href="/blog" className="block py-2 hover:text-red-500">
           Blog
         </Link>
         <div className="relative">
           <button
             onClick={toggleMenuDropdown}
-            className="w-full text-left py-2 text-white hover:text-orange-500 flex items-center justify-between"
+            className="w-full text-left py-2 text-white hover:text-red-500 flex items-center justify-between"
           >
             Menü
             <FiChevronDown />
@@ -228,20 +221,20 @@ export default function Navbar() {
           {showDropdown && (
             <div className="absolute bg-gray-800 text-white rounded shadow-lg mt-2">
               <Link href="/Maker" className="block px-4 py-2 hover:bg-gray-700">
-                Maker
+                empty 
               </Link>
               <Link href="/menu-item2" className="block px-4 py-2 hover:bg-gray-700">
-                Menü Item 2
+               empty
               </Link>
               <Link href="/menu-item3" className="block px-4 py-2 hover:bg-gray-700">
-                Menü Item 3
+                empty lan işte anaaa
               </Link>
             </div>
           )}
         </div>
         <Link
           href="/iletisim"
-          className="block py-2 rounded bg-gradient-to-r from-orange-500 to-orange-300 text-center hover:scale-105 transition"
+          className="block py-2 rounded bg-gradient-to-r from-red-600 to-red-900 text-center hover:scale-105 transition"
         >
           İletişime Geçin
         </Link>
