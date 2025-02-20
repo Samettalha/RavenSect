@@ -7,7 +7,7 @@ export default function AboutUsStats() {
         <div className="w-full xl:w-1/2 relative">
           <div className="w-full px-5">
             <Image
-              src={"/images/grup1.jpg"} // Korkutucu bir görsel
+              src={"/images/.jpg"} // Korkutucu bir görsel
               layout="responsive"
               alt="Karanlık bir mekan"
               width={732}

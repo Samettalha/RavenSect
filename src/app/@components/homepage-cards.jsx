@@ -1,5 +1,4 @@
 import HomeFeatureCard from "@/components/cards/home-feature-card";
-import GlowingButton from "@/components/buttons/glowing-button";
 
 export default function HomePageCards() {
   return (

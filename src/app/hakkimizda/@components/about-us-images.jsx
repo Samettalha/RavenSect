@@ -19,7 +19,7 @@ export default function AboutUsImages() {
         </div>
         <div className="w-full flex items-start lg:w-[40%] relative min-h-[400px] sm:min-h-[600px]">
           <Image
-            src="/images/grup 2.jpg"
+            src="/images/.jpg"
             alt="About Us Image"
             objectFit="cover"
             layout="fill"
@@ -32,7 +32,7 @@ export default function AboutUsImages() {
       <div className="flex flex-col-reverse lg:flex-row gap-10 w-full max-w-[1500px] ">
         <div className="w-full lg:w-[45%] flex relative min-h-[280px] sm:min-h-[500px]">
           <Image
-            src="/images/grup1.jpg"
+            src="/images/.jpg"
             alt="About Us Image"
             objectFit="cover"
             layout="fill"

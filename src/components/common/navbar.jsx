@@ -90,13 +90,13 @@ export default function Navbar() {
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
       style={{
-        background: `rgba(0, 0, 0, 0.2)`,}}
+        background: `rgba(0, 0, 0, 0.8)`,}}
     >
       <div className="container mx-auto flex justify-between items-center h-20 px-7">
         <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
           <Link href="/">
             <Image
-              src="/images/logo3.png"
+              src="/images/RavenSectlogo.png"
               alt="RavenSect Logo"
               width={310}
               height={70}
@@ -136,13 +136,7 @@ export default function Navbar() {
           </div>
           <Link
             href="/iletisim"
-            className="hidden md:block rounded-[40px] px-5 py-3 bg-gradient-to-r  text-white hover:scale-105 transition"
-            style={{
-              borderRadius: "40px",
-              background:
-                "linear-gradient(265deg,rgb(0, 0, 0) -24.03%,rgb(187, 38, 5) 111.01%)",
-            }}
-          >
+            className="hidden md:block rounded-[40px] px-3 py-2 bg-gradient-to-r  hover:text-red-500 text-white hover:scale-105 transition">
             İletişime Geçin
           </Link>
         </div>

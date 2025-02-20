@@ -214,7 +214,7 @@
   border: 1px solid transparent;
   border-radius: 38px;
   background: linear-gradient(#0f0b15, #0f0b15) padding-box,
-    /* Button background */ linear-gradient(265deg, #ff30e0 0%, #ffdd71 100%)
+    /* Button background */ linear-gradient(265deg, #970c07 0%, #ff0000 100%)
       border-box; /* Gradient border */
 }
 

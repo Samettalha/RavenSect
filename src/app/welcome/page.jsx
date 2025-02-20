@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function WelcomePage() {
   return (
-    <div className="h-screen bg-[orange] w-full bg-gradient-to-r flex flex-col justify-center items-center text-white relative overflow-hidden">
+    <div className="h-screen  w-full bg-gradient-to-r flex flex-col justify-center items-center text-white relative overflow-hidden">
       {/* Animated Header */}
       <motion.h1
         initial={{ opacity: 0, y: -50 }}
@@ -40,7 +40,6 @@ export default function WelcomePage() {
         </a>
       </motion.div>
 
-      {/* 🔥 Köşelerden Ortaya Gelen & Patlayan Animasyonlar */}
       {["-100vw,-100vh", "100vw,-100vh", "-100vw,100vh", "100vw,100vh"].map((pos, index) => {
         const [x, y] = pos.split(",");
 

@@ -1,6 +1,11 @@
 "use client";
 import React, { useState } from "react";
+import { createClient } from "@supabase/supabase-js";
 
+const supabase = createClient(
+  "https://zhdxjrqckdcgqhmxjlts.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpoZHhqcnFja2RjZ3FobXhqbHRzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzkzNTg1MjQsImV4cCI6MjA1NDkzNDUyNH0.RFrDMHk_GJi7-Oh00CAv_nsPKz-Jl6IBTE12EDnSM9g"
+);
 function AccountSettings() {
   const [profilePic, setProfilePic] = useState(null);
   const [username, setUsername] = useState("");
@@ -8,20 +13,61 @@ function AccountSettings() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [is2FAEnabled, setIs2FAEnabled] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
-  const handleFileChange = (e) => {
-    setProfilePic(URL.createObjectURL(e.target.files[0]));
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setLoading(true);
+      const { data, error } = await supabase.storage
+        .from("avatars")
+        .upload(`public/${file.name}`, file, {
+          cacheControl: "3600",
+          upsert: true,
+        });
+      setLoading(false);
+      if (error) {
+        setMessage("Profil resmi yüklenirken hata oluştu!");
+        console.error(error);
+      } else {
+        setProfilePic(URL.createObjectURL(file));
+        setMessage("Profil resmi başarıyla yüklendi!");
+      }
+    }
   };
-
-  const handleSave = () => {
-    console.log("Kullanıcı bilgileri kaydedildi.");
+  const handleSave = async () => {
+    setLoading(true);
+    const { error } = await supabase
+      .from("users")
+      .upsert({
+        username,
+        email,
+        phone,
+        password, // is2FAEnabled kaldırıldı
+      });
+  
+    setLoading(false);
+    if (error) {
+      setMessage("Kullanıcı bilgileri kaydedilemedi! Hata: " + error.message);
+      console.error(error);
+    } else {
+      setMessage("Kullanıcı bilgileri başarıyla kaydedildi!");
+    }
   };
+  
+  
 
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-semibold text-gray-800 mb-6">Hesap Ayarları</h1>
 
-      {/* Profil Fotoğrafı ve Yükleme Butonu */}
+      {message && (
+        <div className="mb-4 p-2 text-center bg-green-500 text-white rounded">
+          {message}
+        </div>
+      )}
+
       <div className="flex items-center flex-col sm:flex-row mb-6">
         <div className="w-24 h-24 rounded-full overflow-hidden mb-4 sm:mb-0 sm:mr-4">
           {profilePic ? (
@@ -37,8 +83,7 @@ function AccountSettings() {
         />
       </div>
 
-      {/* Kullanıcı Bilgileri */}
-      <div className="mb-2">   
+      <div className="mb-2">
         <label className="block text-orange-600 font-medium mb-2">Kullanıcı Adı</label>
         <input
           type="text"
@@ -82,7 +127,6 @@ function AccountSettings() {
         />
       </div>
 
-      {/* Güvenlik Ayarları */}
       <div className="flex items-center mb-6">
         <input
           type="checkbox"
@@ -93,39 +137,20 @@ function AccountSettings() {
         <label className="text-orange-600">İki Adımlı Doğrulama (2FA) Aktif Et</label>
       </div>
 
-      {/* Dil ve Tema Seçenekleri */}
-      <div className="mb-6">
-        <label className="block text-orange-600 font-medium mb-2">Dil Tercihi</label>
-        <select
-          className="border p-2 w-full rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-800"
-        >
-          <option value="tr">Türkçe</option>
-          <option value="en">English</option>
-        </select>
-      </div>
-
-      <div className="mb-6">
-        <label className="block text-orange-600 font-medium mb-2">Tema</label>
-        <select
-          className="border p-2 w-full rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-800"
-        >
-          <option value="dark">Koyu</option>
-          <option value="light">Açık</option>
-        </select>
-      </div>
-
-      {/* Kaydet Butonu */}
       <div className="flex justify-end">
         <button
           onClick={handleSave}
-          className=" text-white px-6 py-2 rounded hover:bg-orange-700 transition duration-300"
+          disabled={loading}
+          className={`text-white px-6 py-2 rounded transition duration-300 ${loading ? "bg-gray-500" : "hover:bg-orange-700"}`}
           style={{
             borderRadius: "40px",
             background:
-              "linear-gradient(265deg,rgb(189, 15, 15) -24.03%,rgb(14, 8, 7) 111.01%)",
-             }}
-          >
-          Kaydet
+              loading
+                ? "gray"
+                : "linear-gradient(265deg,rgb(189, 15, 15) -24.03%,rgb(14, 8, 7) 111.01%)",
+          }}
+        >
+          {loading ? "Kaydediliyor..." : "Kaydet"}
         </button>
       </div>
     </div>
