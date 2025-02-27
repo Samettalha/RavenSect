@@ -20,7 +20,7 @@ export default function GoogleMapsProvider() {
     // Set the initial height
     updateMapHeight();
 
-    // Update height on window resize he he hebele hübele
+    // Update height on window resize
     window.addEventListener("resize", updateMapHeight);
 
     // Clean up the event listener on component unmount
@@ -31,46 +31,39 @@ export default function GoogleMapsProvider() {
 
   return (
     <div className="w-full lg:w-1/2 px-5 sm:px-0">
-      <div className="md:mr-6 rounded-lg overflow-hidden">
+      <div className="md:mr-6 rounded-lg overflow-hidden border-4 border-orange-700 shadow-[0_0_20px_orange] relative">
+        <div className="absolute inset-0 bg-black opacity-30"></div>
         <GoogleMapsEmbed
           apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
           width="100%"
           height={mapHeight} // Dynamic height based on screen width
           mode="place"
-          q="Ankara gardaşş,Turkey"
+          q="Fortnite Battle Royale Island, USA" // Chosen game-related location
         />
       </div>
       <div className="w-full flex justify-end">
-        <div className="h-[300px] w-full md:w-[400px] flex flex-col p-5 text-white bg-black rounded-2xl md:-mt-52 z-10 relative">
+        <div className="h-[300px] w-full md:w-[400px] flex flex-col p-5 text-orange-500 bg-black rounded-2xl md:-mt-52 z-10 relative shadow-lg shadow-orange-900 border border-orange-700">
           <div className="flex flex-col gap-7 p-5">
-            <div className="flex gap-3">
-              <Image width={24} height={24} src={"/svg/phone.svg"} />
-              <div>yakında gelir</div>
+            <div className="flex gap-3 animate-fade-in">
+              <Image width={24} height={24} src={"/svg/phone.svg"} className="animate-pulse" />
+              <div className="text-gray-400">Tactical Call</div>
             </div>
-            <div className="flex gap-3">
-              <Image width={24} height={24} src={"/svg/mail.svg"} />
-              <div>kavutcusamettalha@gmail.com</div>
+            <div className="flex gap-3 animate-fade-in delay-500">
+              <Image width={24} height={24} src={"/svg/mail.svg"} className="animate-bounce" />
+              <div className="text-gray-400">missions@gameworld.com</div>
             </div>
-            <div className="flex items-start gap-3">
-              <Image width={24} height={24} src={"/svg/address.svg"} />
-              <div>keciören/Ankara</div>
+            <div className="flex items-start gap-3 animate-fade-in delay-1000">
+              <Image width={24} height={24} src={"/svg/address.svg"} className="animate-spin" />
+              <div className="text-gray-400">Victory Island</div>
             </div>
           </div>
 
-          <div className="flex gap-5 px-3">
-            <Link
-              href={"https://www.instagram.com/s.t_kavutcu/"}
-              target="blank"
-            >
-              <Image width={40} height={40} src={"/svg/twitter.svg"} />
+          <div className="flex gap-5 px-3 animate-flicker">
+            <Link href="https://twitter.com" target="_blank">
+              <Image width={40} height={40} src={"/svg/twitter.svg"} className="hover:scale-110 transition-transform duration-300" />
             </Link>
-            <Link
-              href={
-                "https://www.instagram.com/s.t_kavutcu/"
-              }
-              target="blank"
-            >
-              <Image width={40} height={40} src={"/svg/instagram.svg"} />
+            <Link href="https://instagram.com" target="_blank">
+              <Image width={40} height={40} src={"/svg/instagram.svg"} className="hover:scale-110 transition-transform duration-300" />
             </Link>
           </div>
         </div>

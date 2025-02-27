@@ -1,60 +1,57 @@
 import FaqCard from "@/components/cards/faq-card";
 import GlowingButton from "@/components/buttons/glowing-button";
 import Link from "next/link";
+
 export default function Faq() {
   return (
-    <div className="flex flex-col gap-24 mt-5 sm:mt-20">
-      <div className="flex flex-col gap-5 items-center justify-center  text-white text-center">
-        <GlowingButton title={"SSS"} />
+    <div className="flex flex-col gap-24 mt-5 sm:mt-20 text-green-500 p-10 border border-yellow-700 shadow-lg shadow-red-900">
+      <div className="flex flex-col gap-5 items-center justify-center text-center">
+        <GlowingButton title={"SSS"} className="text-red-500" />
         <p className="text-[32px] leading-[56px] font-semibold">
-          Sıkça Sorulan Sorular(aslında sorulmuyo:D)
+          Sıkça Sorulan Sorular (Gizli Maceralar...)
         </p>
-        <p className="max-w-[650px]">
-          baklava
+        <p className="max-w-[650px] text-gray-400">
+          Bu bölgedeki tüm sırlar burada... Hazır mısınız?
         </p>
       </div>
       <div className="flex gap-5 flex-col w-full items-center justify-center">
         <FaqCard
           content={
-          "Baklava (Osmanlıca: باقلوا) Türk, Orta Doğu, Balkan ve Güney Asya mutfaklarında yer etmiş önemli bir hamur tatlısıdır. İnce yufkaların arasına yöreye göre ceviz, antep fıstığı, badem veya fındık konarak yapılır. Genel olarak şeker şerbeti ile tatlandırılır. Ayrıca bal şerbeti de kullanılabilir. Bazı ticari firmalar kendi özel şerbetlerini kullanırlar.AB Komisyonu tarafından 8 Ağustos 2013 tarihinde baklavanın Türk tatlısı olduğu tescil edilmiştir"
-            
+            "Karakterinizi seçin ve bu tehlikeli yolda ilerlemeye başlayın. Ama dikkatli olun, her adımda yeni bir tehlike gizli!"
           }
-          title={"baklava nedir?"}
+          title={"Oyun dünyasında nasıl bir karakter yaratabilirim?"}
         />
         <FaqCard
           content={
-          "Baklava (Osmanlıca: باقلوا) Türk, Orta Doğu, Balkan ve Güney Asya mutfaklarında yer etmiş önemli bir hamur tatlısıdır. İnce yufkaların arasına yöreye göre ceviz, antep fıstığı, badem veya fındık konarak yapılır. Genel olarak şeker şerbeti ile tatlandırılır. Ayrıca bal şerbeti de kullanılabilir. Bazı ticari firmalar kendi özel şerbetlerini kullanırlar.AB Komisyonu tarafından 8 Ağustos 2013 tarihinde baklavanın Türk tatlısı olduğu tescil edilmiştir."
-            
+            "Oyun, her kahramana uygun zorluklar sunar. Kimse geri dönmeden önce neyle karşılaştığını bilmez!"
           }
-          title={"baklava hangi tür deneyimler sunuluyor?"}
+          title={"Oyunda hangi tür mücadeleler var?"}
         />
         <FaqCard
-          content={"Baklava (Osmanlıca: باقلوا) Türk, Orta Doğu, Balkan ve Güney Asya mutfaklarında yer etmiş önemli bir hamur tatlısıdır. İnce yufkaların arasına yöreye göre ceviz, antep fıstığı, badem veya fındık konarak yapılır. Genel olarak şeker şerbeti ile tatlandırılır. Ayrıca bal şerbeti de kullanılabilir. Bazı ticari firmalar kendi özel şerbetlerini kullanırlar.AB Komisyonu tarafından 8 Ağustos 2013 tarihinde baklavanın Türk tatlısı olduğu tescil edilmiştir."}
-          title={"XPZone hangi yaş grubuna hitap eder?"}
+          content={
+            "Bu dünyada yalnız değilsiniz. Başka kahramanlarla takım kurarak daha büyük tehlikelere karşı savaşabilirsiniz. Ama güvendiğinizden emin olun!"
+          }
+          title={"Oyunda takım kurabilir miyim?"}
         />
         <FaqCard
           content={
             <div>
-              XPZone’daki EE link yok{" "}
-              <Link
-                href={
-                  ""
-                }
+              "Oyun dünyasında keşfedecek çok şey var. Eğer cesaretiniz varsa, <Link
+                href={""}
                 target="blank"
-                className="text-orange-500 font-bold"
+                className="text-red-500 font-bold"
               >
-                deneyim çözümleri yoook
-              </Link>
-              baklava var{" "}
+                Gizli bölgeleri keşfetmek için buraya tıklayın...
+              </Link>"
             </div>
           }
-          title={"XPZone’daki deneyimler ne tür etkileşimler içeriyor?"}
+          title={"Oyun dünyasında hangi gizemli yerleri keşfedebilirim?"}
         />
         <FaqCard
           content={
-            "baklava içeriyor"
+            "Oyun, cesur maceracılara her an yeni bir tecrübe sunar. En derin sırları keşfetmeye hazır olun!"
           }
-          title={"XPZone’da sosyal medya etkileşimi nasıl teşvik ediliyor? ediliyormu?"}
+          title={"Oyunda ilerledikçe neler keşfedeceğim?"}
         />
       </div>
     </div>

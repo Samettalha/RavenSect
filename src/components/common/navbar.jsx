@@ -1,8 +1,8 @@
 "use client"; 
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { FiChevronDown } from "react-icons/fi";
 import { FaBars } from "react-icons/fa";
 import { supabase } from "../../lib/supabase";
@@ -17,7 +17,7 @@ export default function Navbar() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState(null);
-
+  const [isAdmin, setIsAdmin] = useState(false);  // Admin kontrolü için state
 
   useEffect(() => {
     const getUser = async () => {
@@ -29,12 +29,13 @@ export default function Navbar() {
       if (user) {
         const { data, error } = await supabase
           .from("profiles")
-          .select("username")
+          .select("username, role")  // role'yi de alıyoruz
           .eq("id", user.id)
           .single();
 
         if (data) {
           setUsername(data.username);
+          setIsAdmin(data.role === 'admin');  // Admin mi kontrol ediyoruz
         } else {
           setUsername("Kullanıcı");
         }
@@ -42,6 +43,15 @@ export default function Navbar() {
     };
     getUser();
   }, []);
+  const getUser = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+    } catch (error) {
+      console.error("Kullanıcı alınırken hata oluştu:", error);
+    }
+  };
+  
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -66,7 +76,6 @@ export default function Navbar() {
   const isActive = (path) =>
     pathname === path ? "text-red-500" : "text-white";
 
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY && window.scrollY > 100) {
@@ -86,11 +95,8 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 bg-black border-b border-[#343434] transition-transform duration-300 ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
-      }`}
-      style={{
-        background: `rgba(0, 0, 0, 0.8)`,}}
+      className={`fixed top-0 w-full z-50 bg-black border-b border-[#343434] transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
+      style={{ background: `rgba(0, 0, 0, 0.8)` }}
     >
       <div className="container mx-auto flex justify-between items-center h-20 px-7">
         <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
@@ -107,6 +113,7 @@ export default function Navbar() {
         <div className="md:hidden" onClick={toggleMenu}>
           <FaBars className="text-white" />
         </div>
+
         {/* Desktop Menü */}
         <div className="hidden md:flex gap-12 text-white font-semibold items-center justify-center flex-1">
           <Link href="/hakkimizda" className={`${isActive("/hakkimizda")} hover:text-red-500`}>
@@ -122,21 +129,19 @@ export default function Navbar() {
             </button>
             {showDropdown && (
               <div className="absolute right-0 mt-2 bg-gray-800 text-white rounded shadow-lg">
-                <Link href="/oyunlar" className="block px-4 py-2 hover:bg-gray-700">
-                  Maker
+                <Link href="/games" className="block px-4 py-2 hover:bg-gray-700">
+                  games
                 </Link>
                 <Link href="/empty" className="block px-4 py-2 hover:bg-gray-700">
-                  Menü Item 2
-                </Link>
-                <Link href="/empty" className="block px-4 py-2 hover:bg-gray-700">
-                  Menü Item 3
+                  empty
                 </Link>
               </div>
             )}
           </div>
           <Link
             href="/iletisim"
-            className="hidden md:block rounded-[40px] px-3 py-2 bg-gradient-to-r  hover:text-red-500 text-white hover:scale-105 transition">
+            className="hidden md:block rounded-[40px] px-3 py-2 bg-gradient-to-r  hover:text-red-500 text-white hover:scale-105 transition"
+          >
             İletişime Geçin
           </Link>
         </div>
@@ -162,6 +167,11 @@ export default function Navbar() {
                 <Link href="/user/account" className="block px-4 py-2 hover:bg-gray-700">
                   Hesap Ayarları
                 </Link>
+                {isAdmin && (
+                  <Link href="/admin-panel" className="block px-4 py-2 hover:bg-gray-700">
+                    Admin Paneli
+                  </Link>
+                )}
                 <button
                   onClick={handleLogout}
                   className="block px-4 py-2 text-left hover:bg-gray-700"
@@ -190,11 +200,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobil Menü */}
-      <div
-        className={`${
-          isOpen ? "block" : "hidden"
-        } md:hidden text-white bg-gray-800 p-5 border-t border-gray-700`}
-      >
+      <div className={`${isOpen ? "block" : "hidden"} md:hidden text-white bg-gray-800 p-5 border-t border-gray-700`}>
         <Link href="/zonelar" className="block py-2 hover:text-red-500">
           Zonelar
         </Link>
@@ -216,12 +222,6 @@ export default function Navbar() {
             <div className="absolute bg-gray-800 text-white rounded shadow-lg mt-2">
               <Link href="/Maker" className="block px-4 py-2 hover:bg-gray-700">
                 empty 
-              </Link>
-              <Link href="/menu-item2" className="block px-4 py-2 hover:bg-gray-700">
-               empty
-              </Link>
-              <Link href="/menu-item3" className="block px-4 py-2 hover:bg-gray-700">
-                empty lan işte anaaa
               </Link>
             </div>
           )}
@@ -250,6 +250,11 @@ export default function Navbar() {
             <Link href="/account-settings" className="block mt-2 px-4 py-2 hover:bg-gray-700">
               Hesap Ayarları
             </Link>
+            {isAdmin && (
+              <Link href="/admin-panel" className="block mt-2 px-4 py-2 hover:bg-gray-700">
+                Admin Paneli
+              </Link>
+            )}
             <button
               onClick={handleLogout}
               className="block mt-2 px-4 py-2 text-left hover:bg-gray-700"

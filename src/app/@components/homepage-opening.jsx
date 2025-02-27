@@ -4,42 +4,40 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <div className="w-full h-screen bg-black">
-      <VideoBackground videoSrc={"videos/backgraund.mp4"}> {/* Korkutucu bir video arka planı ekle */}
-        <div className="w-full h-full flex justify-center md:justify-start p-5 items-end">
-          <div className="flex flex-col gap-5 md:ml-[20%] md:mb-[8%] max-w-[600px]">
-            <p className="font-bold text-red-600 text-2xl md:text-4xl animate-flicker">
+      <VideoBackground videoSrc={"videos/adventure-background.mp4"}> {/* Aksiyon ve macera temasına uygun bir video arka planı */}
+        <div className="w-full h-full flex justify-start p-5 items-end">
+          <div className="flex flex-col gap-5 ml-8 mb-12 max-w-[600px]"> {/* Yazıları sola almak ve biraz daha aşağıya yerleştirmek için margin eklendi */}
+            <p className="font-bold text-yellow-500 text-2xl md:text-4xl">
               <span
-                className="font-bold text-[48px] md:text-[64px] md:leading-[70px] text-white animate-flicker"
+                className="font-bold text-[48px] md:text-[64px] md:leading-[70px] text-white"
                 style={{
-                  background:
-                    "linear-gradient(183deg, #FF0000 6.68%, #7A0000 40.92%)",
+                  background: "linear-gradient(183deg, #FF5733 6.68%, #FFC300 40.92%)",
                   backgroundClip: "text",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
-                  textShadow: "0px 0px 5px rgba(255, 0, 0, 0.6), 0px 0px 10px rgba(255, 0, 0, 0.5)", // Daha az parlama
+                  textShadow: "0px 0px 2px rgba(255, 255, 0, 0.8), 0px 0px 12px rgba(255, 165, 0, 0.6)", // Parlak efekt
                   userSelect: "none",
                 }}
               >
-                KORKUNUN
+                MACERA VE
               </span>{" "}
-              GÖLGESİNDE
+              AKSİYON DOLU
             </p>
 
-            <p className="text-base text-white opacity-80">
-              Gerçekten test edilmek istenenler için... Karanlıkta kaybolan her şey, tekrar dönmeyecek.
+            <p className="text-base text-white opacity-90">
+              Efsanevi bir kahraman ol, zorlu görevleri tamamla ve unutulmaz bir yolculuğa çık. Hazır mısın?
             </p>
             <div className="flex flex-col sm:flex-row gap-5">
-              <Link href="/hakkimizda">
+              <Link href="/oyunlar">
                 <button
                   className="text-sm text-white font-semibold h-[47px] w-full sm:w-[215px] custom-border"
                   style={{
                     borderRadius: "40px",
-                    background:
-                      "linear-gradient(265deg, #D40000 -24.03%, #5C0000 111.01%)",
-                    boxShadow: "0 0 10px rgba(255, 0, 0, 0.5)", // Azaltılmış parlama
+                    background: "linear-gradient(265deg, #FF5733 -24.03%, #FF8C00 111.01%)", // Aksiyon rengi
+                    boxShadow: "0 0 15px rgba(255, 165, 0, 0.7)", // Parlak etki
                   }}
                 >
-                  Daha Fazla Öğren
+                  Macerana Başla
                 </button>
               </Link>
             </div>
