@@ -132,7 +132,7 @@ export default function Navbar() {
                 <Link href="/games" className="block px-4 py-2 hover:bg-gray-700">
                   games
                 </Link>
-                <Link href="/empty" className="block px-4 py-2 hover:bg-gray-700">
+                <Link href="/game1" className="block px-4 py-2 hover:bg-gray-700">
                   empty
                 </Link>
               </div>
@@ -168,7 +168,7 @@ export default function Navbar() {
                   Hesap Ayarları
                 </Link>
                 {isAdmin && (
-                  <Link href="/admin-panel" className="block px-4 py-2 hover:bg-gray-700">
+                  <Link href="/management/panel" className="block px-4 py-2 hover:bg-gray-700">
                     Admin Paneli
                   </Link>
                 )}
@@ -251,7 +251,7 @@ export default function Navbar() {
               Hesap Ayarları
             </Link>
             {isAdmin && (
-              <Link href="/admin-panel" className="block mt-2 px-4 py-2 hover:bg-gray-700">
+              <Link href="/management/panel" className="block mt-2 px-4 py-2 hover:bg-gray-700">
                 Admin Paneli
               </Link>
             )}

@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <div className="w-full h-screen bg-black">
-      <VideoBackground videoSrc={"videos/adventure-background.mp4"}> {/* Aksiyon ve macera temasına uygun bir video arka planı */}
+      <VideoBackground videoSrc={"videos/tree.mp4"}> {/* Aksiyon ve macera temasına uygun bir video arka planı */}
         <div className="w-full h-full flex justify-start p-5 items-end">
           <div className="flex flex-col gap-5 ml-8 mb-12 max-w-[600px]"> {/* Yazıları sola almak ve biraz daha aşağıya yerleştirmek için margin eklendi */}
             <p className="font-bold text-yellow-500 text-2xl md:text-4xl">
@@ -28,7 +28,7 @@ export default function HomePage() {
               Efsanevi bir kahraman ol, zorlu görevleri tamamla ve unutulmaz bir yolculuğa çık. Hazır mısın?
             </p>
             <div className="flex flex-col sm:flex-row gap-5">
-              <Link href="/oyunlar">
+              <Link href="/game1">
                 <button
                   className="text-sm text-white font-semibold h-[47px] w-full sm:w-[215px] custom-border"
                   style={{

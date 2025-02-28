@@ -36,7 +36,7 @@ export default function WelcomePage() {
           href="/"
           className="px-6 py-3 bg-red-500 text-black rounded-lg shadow-lg hover:bg-red-400 transition-all duration-300"
         >
-         aşkoluğun derinliklerine in
+        oyunun derinliklerine in
         </a>
       </motion.div>
 

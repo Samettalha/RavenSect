@@ -1,66 +1,56 @@
-import Image from "next/image"; // Next.js Image bileşenini import eder.
-import Link from "next/link";   // Next.js Link bileşenini import eder.
-
-export default function Footer() {
+const Footer = () => {
   return (
-    <div className="mt-10">
-      {/* Footer başlangıcı, üst kısmında logo yer alır */}
-      <div className="flex items-center justify-center border-b p-5 border-b-[#585858]">
-      <Link href="/">
-        <Image
-      
-           src="/images/RavenLogo.png"  // Logo görseli
-          alt="10XP X"          // Görselin açıklaması
-          width={300}                 // Genişlik
-          height={35}                 // Yükseklik
-          className="cursor-pointer" // Görselin tıklanabilir olması için stil
+    <footer className="bg-[#101015] text-white py-10 px-5">
+      <div className="container mx-auto grid md:grid-cols-4 gap-8">
+        <div>
+          <h2 className="text-lg font-bold">KEŞFET</h2>
+          <ul className="mt-2 space-y-1">
+            <li><a href="/games" className="text-cyan-400 hover:underline">OYUNLAR</a></li>
+            <li><a href="/news" className="text-cyan-400 hover:underline">HABERLER</a></li>
+            <li><a href="/community" className="text-cyan-400 hover:underline">TOPLULUK</a></li>
+            <li><a href="/support" className="text-cyan-400 hover:underline">DESTEK</a></li>
+          </ul>
+        </div>
         
+        <div>
+          <h2 className="text-lg font-bold">HAKKIMIZDA</h2>
+          <ul className="mt-2 space-y-1">
+            <li><a href="/company" className="hover:underline">Şirketimiz</a></li>
+            <li><a href="/politika" className="hover:underline">Politikalarımız</a></li>
+            <li><a href="/press" className="hover:underline">Basın</a></li>
+            <li><a href="/contact" className="hover:underline">İletişim</a></li>
+          </ul>
+        </div>
         
-        /></Link>
-      </div>
-
-      {/* Footer alt kısmı */}
-      <div className="flex w-full h-[100px]">
-        <div className="flex flex-col sm:flex-row w-full items-center sm:justify-between px-10 mt-5 sm:mt-0">
-          {/* Copyright bilgisi */}
-          <p className="text-[16px] leading-[26px] text-[#AEAEAE] text-center">
-            © Copyright 2025, All Rights Reserved :D 
-          </p>
-
-          {/* Sosyal medya ikonları */}
-          <div className="flex justify-center items-center p-5 gap-x-6">
-            {/* Twitter Linki */}
-            <Link
-              href="https://x.com/ravensect36847" // Twitter profil linki
-              target="_blank"  // Yeni sekmede açılır
-              rel="noopener noreferrer"  // Güvenlik için
-            >
-              <Image
-                src="/svg/twitter.svg"  // Twitter simgesi
-                alt="10XP Twitter"      // Görselin açıklaması
-                width={40}               // Genişlik
-                height={40}              // Yükseklik
-                className="cursor-pointer" // Görselin tıklanabilir olması için stil
-              />
-            </Link>
-
-            {/* Instagram Linki */}
-            <Link
-              href="https://www.instagram.com/raven_sect/"  // Instagram profil linki
-              target="_blank"  // Yeni sekmede açılır
-              rel="noopener noreferrer"  // Güvenlik için
-            >
-              <Image
-                src="/svg/instagram.svg"  // Instagram simgesi
-                alt="10XP Instagram"      // Görselin açıklaması
-                width={40}                 // Genişlik
-                height={40}                // Yükseklik
-                className="cursor-pointer" // Görselin tıklanabilir olması için stil
-              />
-            </Link>
+        <div>
+          <h2 className="text-lg font-bold">TOPLULUK</h2>
+          <ul className="mt-2 space-y-1">
+            <li><a href="/forum" className="hover:underline">Ravensect Forum</a></li>
+            <li><a href="/support" className="hover:underline">Destek</a></li>
+            <li><a href="/leaderboards" className="hover:underline">Oyuncu Sıralamaları</a></li>
+            <li><a href="/help" className="hover:underline">Yardım</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h2 className="text-lg font-bold">RAVENSECT UYGULAMASI</h2>
+          <p className="text-sm mt-2">Favori oyunlarını yanında taşı, hiçbir gelişmeyi kaçırma!</p>
+          <div className="mt-3 flex space-x-2">
+            <a href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer">
+              <img src="/app-store.png" alt="App Store" className="w-28 cursor-pointer" />
+            </a>
+            <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
+              <img src="/google-play.png" alt="Google Play" className="w-28 cursor-pointer" />
+            </a>
           </div>
         </div>
       </div>
-    </div>
+      
+      <div className="border-t border-gray-600 mt-10 pt-5 text-center text-sm">
+        Ravensect, oyuncular için en iyi deneyimi sunar.
+      </div>
+    </footer>
   );
-}
+};
+
+export default Footer;

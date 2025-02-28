@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function GamePage() {
   return (
-    <div className="flex flex-col items-center justify-center gap-10 mt-10 p-5 bg-black text-white">
+    <div className="flex flex-col items-center justify-center gap-10 mt-10 p-5  text-white">
       <h1 className="text-4xl font-bold text-orange-500">Oyunun Tanıtımı</h1>
       <p className="text-lg text-gray-300 max-w-2xl text-center">
         Bu oyun, heyecan verici bir macera, güçlü görseller ve epik hikayelerle dolu. 

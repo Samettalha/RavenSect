@@ -1,4 +1,5 @@
 "use client";
+import React from 'react'
 import { useState, useEffect } from "react";
 import Head from "next/head"; // Eğer Next.js kullanıyorsanız
 import Image from "next/image";
@@ -8,7 +9,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaSteam, FaDiscord, FaReddit, FaTwitter, FaStar } from "react-icons/fa";
+import { FaSteam, FaDiscord, FaReddit, FaTwitter, FaStar,FaInstagram,FaShoppingCart,FaTrophy,} from "react-icons/fa";
+
 
 const GameDetail = () => {
   // State tanımlamaları
@@ -25,13 +27,13 @@ const GameDetail = () => {
   const gameData = {
     name: "Efsane Oyun",
     slogan: "Kaderini Yaz!",
-    releaseDate: "15 Eylül 2023",
-    genre: "Aksiyon RPG",
-    developer: "ABC Studios",
-    publisher: "XYZ Entertainment",
-    platforms: ["PC", "PlayStation 5", "Xbox Series X"],
-    languages: ["Türkçe", "İngilizce", "Almanca"],
-    modes: ["Tek Oyunculu", "Çok Oyunculu"],
+    releaseDate: "15 temmuz 2025",
+    genre: "aksiyon strateji",
+    developer: "RavenSect Studios",
+    publisher: "RavenSect",
+    platforms: ["PC"],
+    languages: ["Türkçe", "İngilizce"],
+    modes: ["Tek Oyunculu"],
     inAppPurchases: true,
     description:
       "Bu oyun, insanlığın son umutlarını taşıyan bir kahramanın destansı yolculuğunu anlatıyor.",
@@ -118,6 +120,8 @@ const GameDetail = () => {
     { name: "Discord", icon: FaDiscord, url: "https://discord.gg/link" },
     { name: "Reddit", icon: FaReddit, url: "https://reddit.com/link" },
     { name: "Twitter", icon: FaTwitter, url: "https://twitter.com/link" },
+    { name: "Instagram", icon: FaInstagram, url: "https://instagram.com/link" },
+
   ];
 
   // Satın Alma Linkleri
@@ -129,17 +133,17 @@ const GameDetail = () => {
   // İnceleme ve Puanlar
   const reviews = [
     {
-      source: "Steam",
+      source: "furkan",
       rating: 4.8,
       comment: "Harika bir oyun!",
     },
     {
-      source: "Metacritic",
+      source: "tuncay",
       rating: 4.5,
       comment: "Mükemmel bir deneyim.",
     },
     {
-      source: "IGN",
+      source: "samet",
       rating: 4.9,
       comment: "Mutlaka oynanmalı.",
     },
@@ -162,6 +166,18 @@ const GameDetail = () => {
   const discountedPrice = gameData.discount
     ? (gameData.price - gameData.price * (gameData.discount / 100)).toFixed(2)
     : gameData.price.toFixed(2);
+    // Paketler ve fiyatlandırma seçenekleri
+const purchaseOptions = [
+  { name: "Standart Sürüm", icon: FaShoppingCart, price: 19.99 },
+  { name: "Deluxe Sürüm", icon: FaStar, price: 29.99 },
+  { name: "Collector's Sürüm", icon: FaTrophy, price: 49.99 },
+];
+
+const [selectedPrice, setSelectedPrice] = React.useState(null);
+
+function handlePurchase(index) {
+  setSelectedPrice(purchaseOptions[index].price);
+}
 
   return (
     <div className=" text-white">
@@ -193,22 +209,36 @@ const GameDetail = () => {
       
 
         {/* Oyun Fragmanı ve Videolar */}
-        <section className="container mx-auto px-6 py-12">
+        <section className="container mx-auto px-6 py-12 ">
           <h2 className="text-5xl font-bold text-center" data-aos="fade-up">
             Oyun Fragmanı
           </h2>
           <div className="mt-8 flex flex-col md:flex-row items-center">
             <div className="md:w-2/3" data-aos="fade-right">
               <ReactPlayer
-                url={videoPath}
+                 url="videos/tree.mp4" 
                 width="100%"
                 height="100%"
-                controls
               />
             </div>
-            <div className="text-red-500">
-           <h2> naber</h2>
-
+            <br></br>
+            <div data-aos="fade-up">
+              <h3 className="text-3xl font-bold">Oynanış Mekanikleri</h3>
+              <p className="mt-4">{gameData.gameplayMechanics}</p>
+              <h3 className="text-3xl font-bold mt-8">Sıkça Sorulan Sorular</h3>
+              <ul className="mt-4 space-y-2">
+                <li>
+                  <strong>Soru 1:</strong> Oyun Türkçe dil desteği sunuyor mu?
+                  <br />
+                  <strong>Cevap:</strong> Evet, Türkçe dil desteği mevcuttur.
+                </li>
+                <li>
+                  <strong>Soru 2:</strong> Crossplay özelliği var mı?
+                  <br />
+                  <strong>Cevap:</strong> Evet, tüm platformlar arasında
+                  oynanabilir.
+                </li>
+              </ul>
             </div>
           </div>
         </section>
@@ -250,9 +280,18 @@ const GameDetail = () => {
             <h3 className="text-4xl font-bold text-orange-500">
               Canlı Oyuncu Sayısı
             </h3>
+            <div>
+            </div>
             <p className="mt-4 text-3xl font-extrabold text-green-500">
               {livePlayerCount.toLocaleString()} Oyuncu
             </p>
+            <Image
+              src="/images/register.jpg"
+              alt="Game Screenshot 2"
+              width={500}
+              height={300}
+              className="rounded-lg shadow-xl"
+               />
           </div>
         </section>
 
@@ -362,55 +401,39 @@ const GameDetail = () => {
           </div>
         </section>
 
-        {/* Satın Alma Seçenekleri ve Fiyatlandırma */}
-        <section className="container mx-auto px-6 py-12">
-          <h2 className="text-5xl font-bold text-center" data-aos="fade-up">
-            Satın Alma Seçenekleri
-          </h2>
-          <div
-            className="mt-8 flex justify-center space-x-6"
-            data-aos="fade-up"
-          >
-            {purchaseLinks.map((link, index) => (
-              <a
-                key={index}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-full transition duration-300"
-              >
-                {link.icon && <link.icon className="text-2xl mr-2" />}
-                {link.name}
-              </a>
-            ))}
-          </div>
-          <div className="mt-8 text-center" data-aos="fade-up">
-            <h3 className="text-4xl font-bold">Fiyatlandırma</h3>
-            <p className="mt-4 text-3xl font-extrabold text-green-500">
-              {gameData.discount ? (
-                <>
-                  <span className="line-through text-red-500">
-                    ${gameData.price.toFixed(2)}
-                  </span>{" "}
-                  ${discountedPrice} (-{gameData.discount}%)
-                </>
-              ) : (
-                <>${gameData.price.toFixed(2)}</>
-              )}
-            </p>
-            <div className="mt-4 flex justify-center space-x-4">
-              {gameData.editions.map((edition, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1 bg-gray-800 text-white rounded-full"
-                >
-                  {edition}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-
+      
+         {/* Satın Alma Seçenekleri ve Fiyatlandırma */}
+<section className="container mx-auto px-6 py-12">
+  <h2 className="text-5xl font-bold text-center" data-aos="fade-up">
+    Satın Alma Seçenekleri
+  </h2>
+  <div className="mt-8 text-center" data-aos="fade-up">
+    <h3 className="text-4xl font-bold">Fiyatlandırma</h3>
+    <p className="mt-4 text-3xl font-extrabold text-green-500">
+      {selectedPrice ? (
+        <>
+          <span className="line-through text-red-500">
+            ${gameData.price.toFixed(2)}
+          </span>{" "}
+          ${selectedPrice} (-{gameData.discount}%)
+        </>
+      ) : (
+        <>${gameData.price.toFixed(2)}</>
+      )}
+    </p>
+    <div className="mt-4 flex justify-center space-x-4">
+      {purchaseOptions.map((option, index) => (
+        <span
+          key={index}
+          className="px-3 py-1 bg-gray-800 text-white rounded-full cursor-pointer"
+          onClick={() => handlePurchase(index)}
+        >
+          {option.name}
+        </span>
+      ))}
+    </div>
+  </div>
+  </section>
         {/* Sistem Gereksinimleri */}
         <section className="container mx-auto px-6 py-12">
           <h2 className="text-5xl font-bold text-center text-orange-500" data-aos="fade-up">
