@@ -1,11 +1,13 @@
-import { supabase } from '../../lib/supabase'; // doğru yol
+import '../styles/globals.css';
+import { ThemeProvider } from '../components/ThemeContext';
+import { supabase } from '../lib/supabase';
 
-abase
 function MyApp({ Component, pageProps }) {
-  return (
-    // Supabase bağlamı gerekirse buraya eklenebilir
-    <Component {...pageProps} supabase={supabase} />
-  );
+    return (
+        <ThemeProvider>
+            <Component {...pageProps} supabase={supabase} />
+        </ThemeProvider>
+    );
 }
 
 export default MyApp;

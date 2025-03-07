@@ -6,16 +6,19 @@ export default async function handler(req, res) {
 
     try {
       const transporter = nodemailer.createTransport({
-        service: "smtp.gmail.com",
+        service: "gmail", // Gmail servisi
         auth: {
-          user: "kavutcusamettalha06@gmail.com", // Gmail adresiniz
-          pass: "qftw eupt weic lsug", // Uygulama şifresi
+          user: process.env.EMAIL_USER, // Ortam değişkeninden al
+          pass: process.env.EMAIL_PASS, // Ortam değişkeninden al
+        },
+        tls: {
+          rejectUnauthorized: false, // TLS hatası oluşuyorsa
         },
       });
 
       const mailOptions = {
         from: email,
-        to: "kavutcusamettalha@gmail.com", // Alıcı email adresi
+        to: process.env.RECIPIENT_EMAIL, // Alıcı emaili ortam değişkeninden al
         subject: `İletişim Formu: ${name}`,
         text: `Ad: ${name}\nTelefon: ${phone}\nMesaj: ${message}`,
       };

@@ -354,6 +354,35 @@
   }
 }
 
+/* Açık temada arka plan rengini değiştir */
+.light {
+  background-color: #be0303; /* Açık gri veya istediğin renk */
+}
+
+/* Koyu temada zaten varsayılan olarak siyah */
+.dark {
+  background-color: #101010;
+}
+
+
+/* Uygulamanızda kullanmak için CSS değişkenlerini uygulayın */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+/* CSS dosyanıza ekleyin */
+.fixed {
+  position: fixed;
+}
+.top-4 {
+  top: 1rem;
+}
+.right-4 {
+  right: 1rem;
+}
+.rounded-full {
+  border-radius: 9999px;
+}
 
 
 @layer base {

@@ -71,7 +71,7 @@ const Register = () => {
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-800 to-black relative">
       {/* Arka plan */}
       <div
-        className="absolute inset-0 bg-[url('/images/horror-background.jpg')] bg-cover bg-center opacity-80"
+        className="absolute inset-0 bg-[url('/images/register.jpg')] bg-cover bg-center opacity-80"
         style={{ filter: "blur(5px)" }}
         aria-hidden="true"
       ></div>

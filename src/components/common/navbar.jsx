@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -8,16 +8,18 @@ import { FaBars } from "react-icons/fa";
 import { supabase } from "../../lib/supabase";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [showProfileDropdown, setShowProfileDropdown] = useState(false); 
-  const [isVisible, setIsVisible] = useState(true); 
-  const [lastScrollY, setLastScrollY] = useState(0); 
+  const [isOpen, setIsOpen] = useState(false); // Mobil menü için
+  const [showDropdown, setShowDropdown] = useState(false); // Genel menü dropdown
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false); // Profil dropdown (içinde admin paneli linki)
+  const [isVisible, setIsVisible] = useState(true); // Navbar görünürlüğü
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   const pathname = usePathname();
   const router = useRouter();
+
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(false);  // Admin kontrolü için state
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const getUser = async () => {
@@ -29,13 +31,17 @@ export default function Navbar() {
       if (user) {
         const { data, error } = await supabase
           .from("profiles")
-          .select("username, role")  // role'yi de alıyoruz
+          .select("username, role")
           .eq("id", user.id)
           .single();
-
+        if (error) {
+          console.error("Profil verisi alınırken hata:", error);
+        }
         if (data) {
           setUsername(data.username);
-          setIsAdmin(data.role === 'admin');  // Admin mi kontrol ediyoruz
+          // Eğer kullanıcı rolü "admin" veya mail adresi "samet@example.com" ise admin olarak tanımla.
+          setIsAdmin(data.role === "admin" || user.email === "kavutcusamettalha@gmail.com");
+          console.log("User role from profiles:", data.role);
         } else {
           setUsername("Kullanıcı");
         }
@@ -43,15 +49,6 @@ export default function Navbar() {
     };
     getUser();
   }, []);
-  const getUser = async () => {
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      setUser(user);
-    } catch (error) {
-      console.error("Kullanıcı alınırken hata oluştu:", error);
-    }
-  };
-  
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -65,12 +62,12 @@ export default function Navbar() {
 
   const toggleProfileDropdown = () => {
     setShowProfileDropdown(!showProfileDropdown);
-    setShowDropdown(false); 
+    setShowDropdown(false);
   };
 
   const toggleMenuDropdown = () => {
     setShowDropdown(!showDropdown);
-    setShowProfileDropdown(false); 
+    setShowProfileDropdown(false);
   };
 
   const isActive = (path) =>
@@ -81,25 +78,25 @@ export default function Navbar() {
       if (window.scrollY > lastScrollY && window.scrollY > 100) {
         setIsVisible(false);
       } else {
-        setIsVisible(true); 
+        setIsVisible(true);
       }
       setLastScrollY(window.scrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 bg-black border-b border-[#343434] transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
-      style={{ background: `rgba(0, 0, 0, 0.8)` }}
+      className={`fixed top-0 w-full z-50 border-b border-[#343434] transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+      style={{ background: "rgba(0, 0, 0, 0.8)" }}
     >
       <div className="container mx-auto flex justify-between items-center h-20 px-7">
-        <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
+        {/* Logo */}
+        <div className="flex items-center">
           <Link href="/">
             <Image
               src="/images/RavenSectlogo.png"
@@ -110,29 +107,38 @@ export default function Navbar() {
             />
           </Link>
         </div>
+        {/* Mobil Menü Toggle */}
         <div className="md:hidden" onClick={toggleMenu}>
           <FaBars className="text-white" />
         </div>
-
         {/* Desktop Menü */}
         <div className="hidden md:flex gap-12 text-white font-semibold items-center justify-center flex-1">
-          <Link href="/hakkimizda" className={`${isActive("/hakkimizda")} hover:text-red-500`}>
+          <Link
+            href="/hakkimizda"
+            className={`${isActive("/hakkimizda")} hover:text-red-500`}
+          >
             Hakkımızda
           </Link>
+          
           <div className="relative">
             <button
               onClick={toggleMenuDropdown}
               className="flex items-center text-white hover:text-red-500"
             >
-              Menü
-              <FiChevronDown />
+              Menü <FiChevronDown />
             </button>
             {showDropdown && (
               <div className="absolute right-0 mt-2 bg-gray-800 text-white rounded shadow-lg">
-                <Link href="/games" className="block px-4 py-2 hover:bg-gray-700">
+                <Link
+                  href="/games"
+                  className="block px-4 py-2 hover:bg-gray-700"
+                >
                   games
                 </Link>
-                <Link href="/game1" className="block px-4 py-2 hover:bg-gray-700">
+                <Link
+                  href="/game1"
+                  className="block px-4 py-2 hover:bg-gray-700"
+                >
                   empty
                 </Link>
               </div>
@@ -140,15 +146,18 @@ export default function Navbar() {
           </div>
           <Link
             href="/iletisim"
-            className="hidden md:block rounded-[40px] px-3 py-2 bg-gradient-to-r  hover:text-red-500 text-white hover:scale-105 transition"
+            className="hidden md:block rounded-[40px] px-3 py-2 bg-gradient-to-r hover:text-red-500 text-white hover:scale-105 transition"
           >
             İletişime Geçin
           </Link>
         </div>
-
+        {/* Profil / Login */}
         {user ? (
           <div className="relative">
-            <button onClick={toggleProfileDropdown} className="flex items-center gap-2 text-white hover:60px ">
+            <button
+              onClick={toggleProfileDropdown}
+              className="flex items-center gap-2 text-white"
+            >
               <Image
                 src="/images/avatar.jpeg"
                 alt="Profil"
@@ -161,14 +170,23 @@ export default function Navbar() {
             </button>
             {showProfileDropdown && (
               <div className="absolute right-0 mt-2 bg-gray-800 text-white rounded shadow-lg">
-                <Link href="/user/profil" className="block px-4 py-2 hover:bg-gray-700">
+                <Link
+                  href="/user/profil"
+                  className="block px-4 py-2 hover:bg-gray-700"
+                >
                   Profil Ayarları
                 </Link>
-                <Link href="/user/account" className="block px-4 py-2 hover:bg-gray-700">
+                <Link
+                  href="/user/account"
+                  className="block px-4 py-2 hover:bg-gray-700"
+                >
                   Hesap Ayarları
                 </Link>
                 {isAdmin && (
-                  <Link href="/management/panel" className="block px-4 py-2 hover:bg-gray-700">
+                  <Link
+                    href="/admin"
+                    className="block px-4 py-2 hover:bg-gray-700"
+                  >
                     Admin Paneli
                   </Link>
                 )}
@@ -198,9 +216,12 @@ export default function Navbar() {
           </div>
         )}
       </div>
-
       {/* Mobil Menü */}
-      <div className={`${isOpen ? "block" : "hidden"} md:hidden text-white bg-gray-800 p-5 border-t border-gray-700`}>
+      <div
+        className={`${
+          isOpen ? "block" : "hidden"
+        } md:hidden text-white bg-gray-800 p-5 border-t border-gray-700`}
+      >
         <Link href="/zonelar" className="block py-2 hover:text-red-500">
           Zonelar
         </Link>
@@ -215,13 +236,15 @@ export default function Navbar() {
             onClick={toggleMenuDropdown}
             className="w-full text-left py-2 text-white hover:text-red-500 flex items-center justify-between"
           >
-            Menü
-            <FiChevronDown />
+            Menü <FiChevronDown />
           </button>
           {showDropdown && (
             <div className="absolute bg-gray-800 text-white rounded shadow-lg mt-2">
-              <Link href="/Maker" className="block px-4 py-2 hover:bg-gray-700">
-                empty 
+              <Link
+                href="/Maker"
+                className="block px-4 py-2 hover:bg-gray-700"
+              >
+                empty
               </Link>
             </div>
           )}
@@ -244,14 +267,23 @@ export default function Navbar() {
               />
               {username || "Kullanıcı"}
             </div>
-            <Link href="/profil" className="block mt-2 px-4 py-2 hover:bg-gray-700">
+            <Link
+              href="/profil"
+              className="block mt-2 px-4 py-2 hover:bg-gray-700"
+            >
               Profil Ayarları
             </Link>
-            <Link href="/account-settings" className="block mt-2 px-4 py-2 hover:bg-gray-700">
+            <Link
+              href="/account-settings"
+              className="block mt-2 px-4 py-2 hover:bg-gray-700"
+            >
               Hesap Ayarları
             </Link>
             {isAdmin && (
-              <Link href="/management/panel" className="block mt-2 px-4 py-2 hover:bg-gray-700">
+              <Link
+                href="/management/panel"
+                className="block mt-2 px-4 py-2 hover:bg-gray-700"
+              >
                 Admin Paneli
               </Link>
             )}
