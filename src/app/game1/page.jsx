@@ -30,7 +30,7 @@ const GameDetail = () => {
   
   const sortedComments = comments.sort((a, b) => b.likes - a.likes);
 
-  // Beğeni Ekleme Fonksiyonu
+  //Beğeni Ekleme Fonksiyonu
   function handleLikeComment(index) {
     const updatedComments = [...comments];
     updatedComments[index].likes += 1;
@@ -189,7 +189,7 @@ const GameDetail = () => {
 
   // Paketler ve fiyatlandırma seçenekleri
   const purchaseOptions = [
-    { name: "Standart Sürüm", icon: FaShoppingCart, price: 19.99 },
+    { name: "Standart Sürüm", icon: FaShoppingCart, price: 2.50 },
     { name: "Deluxe Sürüm", icon: FaStar, price: 29.99 },
     { name: "Collector's Sürüm", icon: FaTrophy, price: 49.99 },
   ];
@@ -223,14 +223,12 @@ const GameDetail = () => {
 
   return (
     <div className="text-white ">
-      <Head>
-        <title>{gameData.name} - Game Detail</title>
-      </Head>
+
       <main className="transition-colors duration-500">
         {/* Ana Başlık ve Arkaplan (Hero) */}
         <section className="relative h-screen flex items-center justify-center">
           <video
-            src={videoPath}
+            src={'videos/tree.mp4'}
             autoPlay
             muted
             loop

@@ -3,14 +3,13 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaGoogle, FaGithub, FaFacebook, FaXing } from "react-icons/fa";
-import ReCAPTCHA from "react-google-recaptcha"; // reCAPTCHA bileşeni
+import { supabase } from "@/lib/supabase";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [captchaVerified, setCaptchaVerified] = useState(null);
   const router = useRouter();
 
   const handleLogin = async (e) => {
@@ -18,29 +17,14 @@ const Login = () => {
     setLoading(true);
     setError(null);
 
-    if (!captchaVerified) {
-      setError("Lütfen reCAPTCHA doğrulamasını tamamlayın.");
-      setLoading(false);
-      return;
-    }
-
     try {
-      const response = await fetch("/api/verify-captcha", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          captchaResponse: captchaVerified,
-          email,
-          password,
-        }),
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
       });
-
-      const data = await response.json();
-
-      if (!data.success) {
-        setError("reCAPTCHA doğrulaması başarısız.");
+      
+      if (error) {
+        setError(error.message);
         setLoading(false);
         return;
       }
@@ -67,24 +51,20 @@ const Login = () => {
     }
   };
 
-  const onCaptchaChange = (value) => {
-    setCaptchaVerified(value);
-  };
-
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-black via-red-800 to-gray-900 relative">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br  relative">
       <div
-        className="absolute inset-0 bg-[url('/images/horror-bg.jpg')] bg-cover bg-center opacity-60"
-        style={{ filter: "blur(4px)" }}
+        className="absolute inset-0 bg-[url('/images/register.jpg')] bg-cover bg-center opacity-60"
+        style={{ filter: "blur(2px)" }}
         aria-hidden="true"
       ></div>
-      <div className="bg-gray-900 bg-opacity-70 backdrop-blur text-white border border-red-500 p-8 rounded-lg shadow-2xl max-w-sm w-full relative z-10">
-        <h2 className="text-3xl font-extrabold mb-6 text-red-500">Giriş Yap</h2>
+      <div className="bg-gray-900 bg-opacity-70 backdrop-blur text-white border border-yellow-500 p-8 rounded-lg shadow-2xl max-w-sm w-full relative z-10">
+        <h2 className="text-3xl font-extrabold mb-6 text-yellow-500">Giriş Yap</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
         <form onSubmit={handleLogin}>
           <input
             type="email"
-            className="bg-transparent border w-full p-3 mb-4 text-white rounded focus:outline-none focus:ring-3 focus:ring-red-500"
+            className="bg-transparent border w-full p-3 mb-4 text-white rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
             placeholder="E-posta"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -92,24 +72,16 @@ const Login = () => {
           />
           <input
             type="password"
-            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500 text-white"
+            className="bg-transparent border w-full p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white"
             placeholder="Şifre"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
 
-          {/* reCAPTCHA */}
-          <div className="mb-4">
-            <ReCAPTCHA
-              sitekey="YOUR_SITE_KEY" // Google'dan alacağınız site key
-              onChange={onCaptchaChange}
-            />
-          </div>
-
           <button
             type="submit"
-            className="w-full bg-red-600 text-white p-3 rounded hover:bg-red-700 transition disabled:opacity-50"
+            className="w-full bg-orange-600 text-white p-3 rounded hover:bg-pink-700 transition disabled:opacity-50"
             disabled={loading}
           >
             {loading ? "Yükleniyor..." : "Giriş Yap"}
@@ -140,9 +112,9 @@ const Login = () => {
             <FaFacebook />
           </button>
           <button
-            onClick={() => handleSocialLogin('X')}
+            onClick={() => handleSocialLogin('xing')}
             className="bg-black text-white p-3 rounded-full hover:bg-gray-800 transition flex items-center justify-center"
-            aria-label="X ile Giriş Yap"
+            aria-label="Xing ile Giriş Yap"
           >
             <FaXing />
           </button>
