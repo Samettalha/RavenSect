@@ -20,7 +20,7 @@ export default function AdminUsers() {
     const fetchUsers = async () => {
       const { data, error } = await supabase.from("users").select("*");
       if (error) {
-        console.error("Kullanıcılar çekilirken hata:", error);
+        console.error("Kullanıcıları çekerken hata:", error);
         setErrorMessage("Kullanıcıları çekerken hata: " + error.message);
       } else {
         setUsers(data || []);
@@ -126,7 +126,7 @@ export default function AdminUsers() {
       return;
     }
 
-    // Insert sorgusunda { returning: "representation" } seçeneği ile eklenen satırları dizi olarak geri alıyoruz
+    // Insert sorgusunda { returning: "representation" } seçeneğiyle eklenen satırları alıyoruz
     const { data, error } = await supabase
       .from("users")
       .insert(
@@ -159,11 +159,13 @@ export default function AdminUsers() {
 
   return (
     <div className="p-6 min-h-screen bg-gray-900 text-white">
-      <br></br> <br></br>
-      <br></br> 
+      {/* Başlık ve boşluklar */}
+      <br />
+      <br />
+      <br />
       <h1 className="text-3xl font-bold">Kullanıcı Yönetimi</h1>
 
-      {/* Hata mesajı varsa göster */}
+      {/* Hata mesajı varsa görüntüle */}
       {errorMessage && <p className="mt-4 text-red-500">{errorMessage}</p>}
 
       {/* Yeni Kullanıcı Ekleme Formu */}
@@ -309,7 +311,7 @@ export default function AdminUsers() {
               onChange={(e) =>
                 updateUserRole(selectedUser.id, e.target.value)
               }
-              className="p-2 bg-gray-700 text-white rounded"
+              className="p-2 bg-gray-700 text-white rounded w-full"
             >
               <option value="user">User</option>
               <option value="admin">Admin</option>
