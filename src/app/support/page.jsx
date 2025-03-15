@@ -182,11 +182,10 @@ const SupportPageGamingAI = () => {
       {/* Hero / Tanıtım Bölümü */}
       <section className="text-center">
         <h1 className="text-5xl font-bold text-yellow-500 animate-pulse mb-4">
-          Gaming Destek Merkezi
+          RavenSect Support
         </h1>
         <p className="text-xl max-w-2xl mx-auto">
-          Oyunculara özel modern, rustik ve canlı destek sistemi. Etkileşimli
-          deneyim ve akıllı yanıtlarla sorunlarınızı çözün.
+          
         </p>
       </section>
 
