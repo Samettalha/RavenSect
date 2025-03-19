@@ -159,7 +159,7 @@ export default function Navbar() {
               className="flex items-center gap-2 text-white"
             >
               <Image
-                src="/images/avatar.jpeg"
+                src="/images/furkan.jpg"
                 alt="Profil"
                 width={30}
                 height={30}

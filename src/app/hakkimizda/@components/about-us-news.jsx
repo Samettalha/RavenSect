@@ -18,7 +18,7 @@ export default function AboutUsNews() {
         {/* 1. Fotoğraf */}
         <div className="relative flex-[calc(100%/6)] sm:flex-[calc(100%/6)] lg:flex-[calc(100%/6)] overflow-hidden bg-cover filter saturate-[90%] transition-all duration-1000 hover:flex-[calc(40%)] hover:filter-saturate-[120%] group"
           style={{
-            backgroundImage: "url(/images/action-hero1.jpg)", // Aksiyon temalı ilk fotoğraf
+            backgroundImage: "url(/images/register.jpg)", // Aksiyon temalı ilk fotoğraf
             backgroundPosition: "72% 35%",
           }}
         >
@@ -36,7 +36,7 @@ export default function AboutUsNews() {
         {/* 2. Fotoğraf */}
         <div className="relative flex-[calc(100%/6)] sm:flex-[calc(100%/6)] lg:flex-[calc(100%/6)] overflow-hidden bg-cover filter saturate-[90%] transition-all duration-1000 hover:flex-[calc(40%)] hover:filter-saturate-[120%] group"
           style={{
-            backgroundImage: "url(/images/action-hero2.jpg)", // Aksiyon temalı ikinci fotoğraf  
+            backgroundImage: "url(/images/register.jpg)", // Aksiyon temalı ikinci fotoğraf  
             backgroundPosition: "60% 8%",
           }}
         >
@@ -54,7 +54,7 @@ export default function AboutUsNews() {
         {/* 3. Fotoğraf */}
         <div className="relative flex-[calc(100%/6)] sm:flex-[calc(100%/6)] lg:flex-[calc(100%/6)] overflow-hidden bg-cover filter saturate-[90%] transition-all duration-1000 hover:flex-[calc(40%)] hover:filter-saturate-[120%] group"
           style={{
-            backgroundImage: "url(/images/action-hero3.jpg)", // Aksiyon temalı üçüncü fotoğraf
+            backgroundImage: "url(/images/register.jpg)", // Aksiyon temalı üçüncü fotoğraf
             backgroundPosition: "52% 8%",
           }}
         >

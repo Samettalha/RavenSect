@@ -298,10 +298,107 @@
 
 
 
+@media (max-width: 768px) {
+  .text-5xl {
+    font-size: 2.5rem;  /* Küçük ekranlarda font büyüklüğünü azaltır */
+  }
+
+  .px-6 {
+    padding-left: 1.5rem;  /* Yan boşluk ayarı */
+    padding-right: 1.5rem;
+  }
+
+  .py-12 {
+    padding-top: 3rem;     /* Üst-alt boşluk ayarı */
+    padding-bottom: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .flex-row {
+    flex-direction: column;  /* Dar ekranlarda flex yönünü dikey yapar */
+  }
+
+  .text-center {
+    text-align: center;  /* Metni ortalar */
+  }
+
+  .mt-8 {
+    margin-top: 2rem;  /* Üst boşluk ayarı küçültülüyor */
+  }
+
+  .md\:mt-0 {
+    margin-top: 0;  /* Orta ekranlarda üst boşluk kaldırılır */
+  }
+
+  .md\:ml-8 {
+    margin-left: 0;  /* Orta ekranlarda sol boşluk kaldırılır */
+  }
+
+  .space-x-4 {
+    gap: 1rem;  /* Elemanlar arasındaki boşluk */
+  }
+}
+
+
+.glowing-border {
+  border: 1px solid transparent;
+  border-radius: 38px;
+  background: linear-gradient(#0f0b15, #0f0b15) padding-box,
+    /* Button background */
+    linear-gradient(265deg, #970c07 0%, #ff0000 100%)
+      border-box; /* Gradient border */
+}
+
+.shadow-custom {
+  box-shadow: 0px 0px 12px 0px rgba(255, 255, 255, 0.2) inset,
+    /* Inner glow */
+    0px 4px 50px 0px rgba(159, 100, 239, 0.4); /* Outer glow */
+}
+
+::-webkit-scrollbar {
+  width: 12px;  /* Scrollbar genişliği */
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;  /* Scrollbar track arka planı */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(229, 255, 0);
+  border-radius: 6px;
+  border: 3px solid #000000;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(229, 255, 0) #000000;
+}
+
+::-moz-selection {
+  /* Code for Firefox: Seçilmiş metin rengi ve arka planı */
+  color: black;
+  background: rgb(229, 255, 0);
+}
+
+::selection {
+  color: black;
+  background: rgb(229, 255, 0);
+}
+
+
+
 @layer base {
+  /* 
+    Aşağıdaki :root bloğu, light (varsayılan) tema için renk değişkenlerini tanımlar.
+    --background    : light tema arka plan rengi
+    --foreground    : light tema yazı (metin) rengi
+    Diğer değişkenler de bileşenler (card, popover, primary vs.) için ayarlanmış.
+  */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --background: 0 0% 100%;        /* Light modda arka plan (beyaz) */
+    --foreground: 0 0% 3.9%;         /* Light modda yazı rengi (koyu ton) */
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
@@ -326,9 +423,14 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+  /* 
+    Aşağıdaki .dark bloğu, dark tema için renk değişkenlerini geçersiz kılar.
+    --background    : dark modda arka plan rengi
+    --foreground    : dark modda yazı rengi
+  */
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 3.9%;        /* Dark modda arka plan (çok koyu) */
+    --foreground: 0 0% 98%;         /* Dark modda yazı rengi (açık ton) */
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
@@ -354,23 +456,32 @@
   }
 }
 
-/* Açık temada arka plan rengini değiştir */
+/* 
+  Aşağıdaki sınıflar, doğrudan arka plan renklerini ayarlar.
+  .light: Açık tema için arka plan rengi
+  .dark : Koyu tema için arka plan rengi  
+*/
 .light {
-  background-color: #be0303; /* Açık gri veya istediğin renk */
+  background-color: #be0303; /* Açık temada arka plan rengi (örn: belirlediğin renk) */
 }
 
-/* Koyu temada zaten varsayılan olarak siyah */
 .dark {
-  background-color: #101010;
+  background-color: #101010; /* Koyu temada arka plan rengi */
 }
 
 
-/* Uygulamanızda kullanmak için CSS değişkenlerini uygulayın */
+/* 
+  Bu kısım, CSS değişkenlerini kullanarak sayfanın temel arka plan ve yazı renklerini belirler.
+  Dikkat: var(--background-color) ve var(--text-color) isimlerinin
+  @layer base içindeki tanımlarla aynı olması gerekir.
+  (Eğer uyumlu değilse; var(--background) ve var(--foreground) kullanmanız gerekebilir)
+*/
 body {
   background-color: var(--background-color);
   color: var(--text-color);
 }
-/* CSS dosyanıza ekleyin */
+
+/* CSS dosyanıza ekleyebileceğiniz yardımcı sınıflar */
 .fixed {
   position: fixed;
 }
@@ -385,6 +496,11 @@ body {
 }
 
 
+/* 
+  Tailwind @apply kullanımı: 
+  Aşağıdaki @layer base bloğu, tüm elemanlara 'border-border' ve 'outline-ring/50' 
+  sınıflarını uygular. Ayrıca body içinde bg-background ve text-foreground utility'lerini etkinleştirir.
+*/
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -393,3 +509,4 @@ body {
     @apply bg-background text-foreground;
   }
 }
+

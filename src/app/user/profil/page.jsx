@@ -36,7 +36,7 @@ export default function ProfilePage() {
 
   if (!userData) return <div>Loading...</div>;
 
-  const avatarUrl = userData.user_metadata?.avatar_url || "/default-avatar.png";
+  const avatarUrl = userData.user_metadata?.avatar_url || "/furkan.jpg";
   const fullName = userData.user_metadata?.full_name || "Anonim Kullanıcı";
   const rank = userData.rank || "Newbie";
 

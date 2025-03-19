@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-
+import Link from "next/link";
 
 /* Dashboard: İstatistikler (Gerçek veriler Supabase sorguları ile) */
 function DashboardContent() {
@@ -90,6 +90,8 @@ function AdminUsersContent() {
   const [selectedUser, setSelectedUser] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const [feedbacks, setFeedbacks] = useState("")
+ 
   // Yeni kullanıcı ekleme için state'ler
   const [newUserName, setNewUserName] = useState("");
   const [newUserEmail, setNewUserEmail] = useState("");
@@ -926,7 +928,7 @@ function  AdminSupportManagement() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen p-6">
       <h1 className="text-3xl font-bold mb-8 text-center">Geri Bildirimler</h1>
       {feedbackLoading ? (
         <p className="text-center">Feedbackler yükleniyor...</p>
@@ -1110,6 +1112,8 @@ export default function AdminDashboard() {
               >
                 Yorum Yönetimi
               </li>
+            
+            
               <li
                 className={`p-2 cursor-pointer rounded mb-2 ${
                   activeTab === "games"

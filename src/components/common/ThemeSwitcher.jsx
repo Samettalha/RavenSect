@@ -25,7 +25,7 @@ export default function ThemeSwitcher() {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed top-32 right-4 p-3 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-md transition hover:scale-110 z-50"
+      className="fixed top-32 right-4 p-3 rounded-full bg-gray-200 dark:bg-red-800 text-gray-800 dark:text-red-200 shadow-md transition hover:scale-110 z-50"
     >
       {theme === "light" ? "🌙" : "☀️"}
     </button>

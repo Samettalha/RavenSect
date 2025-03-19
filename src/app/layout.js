@@ -1,5 +1,4 @@
 "use client"; // Burayı ekledik!
-
 import Footer from "@/components/common/footer";
 import "./globals.css";
 import Navbar from "@/components/common/navbar";
@@ -25,9 +24,11 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" className={theme}>
-      <body className={`${theme === "dark" ? "bg-[#101010]" : "bg-[#808080]"}`}>
-           {/* Tema değiştirme butonu */}
-           <button
+      <body
+        className={`${theme === "dark" ? "bg-[#101010] text-white" : "bg-[#a9a9a9] text-black"}`}
+      >
+        {/* Tema değiştirme butonu */}
+        <button
           onClick={toggleTheme}
           className="fixed bottom-5 right-5 z-50 bg-gray-800 text-white p-3 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-600"
         >

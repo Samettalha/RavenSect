@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link'
 import { 
   AlertTriangleIcon, 
   HomeIcon, 
@@ -27,7 +26,7 @@ const NotFoundPage = () => {
         </p>
         <div className="flex justify-center space-x-4">
           <Link 
-            to="/" 
+            href="/" 
             className="flex items-center bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full hover:scale-105 transition"
           >
             <HomeIcon className="mr-2" /> Ana Sayfa
